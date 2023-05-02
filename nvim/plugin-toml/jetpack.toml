@@ -1,0 +1,500 @@
+#[[plugins]]
+#repo = 'EdenEast/nightfox.nvim'
+#hook_post_source = '''
+#colorscheme carbonfox
+#'''
+
+[[plugins]]
+repo = 'ellisonleao/gruvbox.nvim'
+hook_post_source = '''
+set background=dark
+colorscheme gruvbox
+'''
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
+hook_post_source = '''
+lua << EOF
+require('lualine').setup {
+    options = {
+        section_separators = { left = '', right = ''},
+        component_separators = { left = '＼', right = '／' },
+        colored=true
+    },
+    sections = {
+        lualine_c = {
+            'filename','lsp_progress'
+        },
+        lualine_z = { 'location' }
+    }
+}
+-- print(dump(require('lualine').get_config()))
+EOF
+'''
+
+[[plugins]]
+repo = 'akinsho/bufferline.nvim'
+hook_post_source = '''
+set termguicolors
+lua << EOF
+require("bufferline").setup{}
+EOF
+'''
+
+[[plugins]]
+repo = 'arkav/lualine-lsp-progress'
+
+[[plugins]]
+repo = 'akinsho/toggleterm.nvim'
+hook_post_source = '''
+lua <<EOF
+require("toggleterm").setup{ open_mapping = [[<Leader><Leader>t]] }
+EOF
+'''
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]] # gitの表示
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'skanehira/denops-translate.vim'
+hook_post_source = '''
+let g:translate_source = "en"
+let g:translate_target = "ja"
+'''
+
+[[plugins]]
+repo = 'kyazdani42/nvim-tree.lua'
+on_cmd = ['NvimTreeToggle']
+hook_add = '''
+nnoremap <Leader><Leader>f <cmd>NvimTreeToggle<CR>
+'''
+hook_post_source = '''
+lua <<EOF
+require'nvim-tree'.setup {}
+EOF
+'''
+
+[[plugins]]
+repo = 'monaqa/dps-dial.vim'
+depends = ['denops']
+hook_add= '''
+nmap  <C-a>  <Plug>(dps-dial-increment)
+nmap  <C-x>  <Plug>(dps-dial-decrement)
+xmap  <C-a>  <Plug>(dps-dial-increment)
+xmap  <C-x>  <Plug>(dps-dial-decrement)
+xmap g<C-a> g<Plug>(dps-dial-increment)
+xmap g<C-x> g<Plug>(dps-dial-decrement)
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'RRethy/vim-illuminate'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype_vim']
+hook_post_source = '''
+let g:precious_enable_switchers = {
+            \   "markdown": {
+            \       "setfiletype": 0
+            \       }
+            \   }
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = 0
+hook_post_source = '''
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable                     " Disable folding at startup.
+
+lua <<EOF
+require("nvim-treesitter.configs").setup {
+    ensure_installed = "all",
+    highlight = {
+        enable = true,
+        --disable = {"vim", "lua"},
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        -- additional_vim_regex_highlighting = false
+        additional_vim_regex_highlighting = false
+    },
+--    rainbow = {
+--        enable = true,
+--        -- disable = {'html'}, -- list of languages you want to disable the plugin for
+--        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+--        max_file_lines = 100 -- Do not enable for files with more than n lines, int
+--        -- colors = {}, -- table of hex strings
+--        -- termcolors = {} -- table of colour name strings
+--    },
+--    -- indent = {enable = false},
+--    yati = {enable = true}
+}
+EOF
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-context'
+hook_post_source = '''
+lua <<EOF
+require'treesitter-context'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        -- For all filetypes
+        -- Note that setting an entry here replaces all other patterns for this entry.
+        -- By setting the 'default' entry below, you can control which nodes you want to
+        -- appear in the context window.
+        default = {
+            'class',
+            'function',
+            'method',
+            'for',
+            'while',
+            'if',
+            'switch',
+            'case',
+            'interface',
+            'struct',
+            'enum',
+        },
+        -- Example for a specific filetype.
+        -- If a pattern is missing, *open a PR* so everyone can benefit.
+        --   rust = {
+        --       'impl_item',
+        --   },
+    },
+    exact_patterns = {
+        -- Example for a specific filetype with Lua patterns
+        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+        -- exactly match "impl_item" only)
+        -- rust = true,
+    },
+    -- [!] The options below are exposed but shouldn't require your attention,
+    --     you can safely ignore them.
+    zindex = 20, -- The Z-index of the context window
+    mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+    -- Separator between context and content. Should be a single character string, like '-'.
+    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+    separator = nil,
+}
+EOF
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/playground'
+hook_post_source = '''
+lua <<EOF
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
+EOF
+'''
+
+[[plugins]]
+repo = 'folke/lsp-colors.nvim'
+hook_post_source = '''
+lua <<EOF
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
+EOF
+'''
+
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+hook_post_source = '''
+lua <<EOF
+require("mason").setup()
+EOF
+'''
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+depends = [ 'mason.nvim' ]
+hook_post_source = '''
+lua <<EOF
+require("mason-lspconfig").setup()
+EOF
+'''
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+#on_event = ['VimEnter']
+depends = [ 'mason-lspconfig.nvim', 'nvim-cmp' ]
+hook_post_source = '''
+lua <<EOF
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
+
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+--   capabilities = capabilities
+-- }
+require("mason-lspconfig").setup_handlers({ function(server_name)
+  require("lspconfig")[server_name].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+  end
+})
+
+EOF
+'''
+
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+hook_post_source = '''
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
+'''
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+hook_post_source = '''
+" NOTE: You can use other key to expand snippet.
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+
+" If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']
+'''
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-vsnip'
+hook_post_source = '''
+lua <<EOF
+EOF
+'''
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+depends = [ 'nvim-autopairs' ,'cmp-skkeleton']
+hook_post_source = '''
+set completeopt=menu,menuone,noselect
+
+lua <<EOF
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'path' },
+      { name = 'skkeleton' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+
+  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+  local cmp = require('cmp')
+  cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+  )
+EOF
+'''
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+depends = [ 'denops.vim', 'cmp-skkeleton' ]
+hook_post_source = '''
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+
+[[plugins]]
+repo = 'rinx/cmp-skkeleton'
+
