@@ -1,0 +1,120 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "left", // Waybar position (top|bottom|left|right)
+    //"height": 18, // Waybar height
+     "width": 15, // Waybar width
+     "fixed-center": false,
+    // Choose the order of the modules
+     "margin-left": 3,
+     "margin-right": 3,
+     "margin-top": 3,
+     "margin-bottom": 3,
+    "modules-left": ["clock", "sway/window", "sway/mode"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["tray","pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2"],
+    // Modules configuration
+     "sway/workspaces": {
+         "max-length": 1,
+         "rotate": 90,
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": true,
+         "format": " {icon} {name}  ",
+         //"format":"{icon}",
+         "format-icons": {
+             //"1": "",
+             //"2": "",
+             //"3": "",
+             //"10": "",
+             //"4": "",
+             //"5": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "\n {usage}% "
+    },
+    "memory": {
+        "format": " \n {}%"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C ",
+        "format": " \n {temperatureC}°C"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} \n{percent}%",
+        "states": [0,50],
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}1\n{capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT1",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}2\n{capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "",
+        // "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "{ifname} ",
+        //"format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "⚠",
+        "interval" : 7
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{icon} \n{volume}%",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+}
