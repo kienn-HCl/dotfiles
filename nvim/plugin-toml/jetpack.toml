@@ -267,7 +267,7 @@ EOF
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-#on_event = ['VimEnter']
+on_event = ['VimEnter']
 depends = [ 'mason-lspconfig.nvim', 'nvim-cmp' ]
 hook_post_source = '''
 lua <<EOF
