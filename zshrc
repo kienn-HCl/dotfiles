@@ -60,6 +60,15 @@ colors
 # ヒストリを呼び出してから実行する間に一旦編集可能
 setopt hist_verify
 
+# wsl関連
+fix_wsl2_interop() {
+    for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
+        if [[ -e "/run/WSL/${i}_interop" ]]; then
+            export WSL_INTEROP=/run/WSL/${i}_interop
+        fi
+    done
+}
+
 #GO
 #export PATH=$PATH:/usr/local/go/bin
 #export GOPATH=$HOME/go
