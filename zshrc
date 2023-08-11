@@ -1,4 +1,6 @@
-CAview --rule $(( RANDOM % 256 ))
+CARULE=$(( RANDOM % 256 ))
+echo rule: $CARULE
+CAview --rule $CARULE
 
 #save history
 HISTFILE=~/.zsh_history
@@ -200,3 +202,6 @@ eval "$(starship init zsh)"
 
 # asdf
 source /opt/asdf-vm/asdf.sh
+
+# rust
+export PATH=$PATH:~/.cargo/bin
