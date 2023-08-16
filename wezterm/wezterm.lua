@@ -1,15 +1,20 @@
 local wezterm = require 'wezterm'
+require 'format'
+require 'status'
+
 return{
-    font_size = 10,
-    line_height = 0.9,
-    text_background_opacity = 1,
+    enable_wayland = true,
+    font = wezterm.font("Firege35Nerd Console") ,
+    font_size = 11,
+    line_height = 1.0,
+    text_background_opacity = 0.8,
     --color_scheme = "Nocturnal Winter",
     color_scheme = "NightLion v2",
     use_fancy_tab_bar = true,
-    hide_tab_bar_if_only_one_tab = true,
+    hide_tab_bar_if_only_one_tab = false,
+    status_update_interval = 1000,
     window_frame = {
-        font_size = 8,
-        font = wezterm.font { family = 'Roboto', weight = 'Bold' },
+        font_size = 9,
         active_titlebar_bg = '#333333',
         inactive_titlebar_bg = '#333333',
     },
