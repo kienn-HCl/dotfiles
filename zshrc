@@ -1,4 +1,8 @@
-CAview --rule $(( RANDOM % 256 ))
+export PATH=$PATH:~/.bin
+sleep 0.1
+CARULE=$(( RANDOM % 256 ))
+echo rule: $CARULE
+CAview --rule $CARULE
 
 #save history
 HISTFILE=~/.zsh_history
@@ -64,7 +68,7 @@ setopt hist_verify
 #export PATH=$PATH:/usr/local/go/bin
 #export GOPATH=$HOME/go
 #export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/go/bin
+#export PATH=$PATH:~/go/bin
 
 #powerline
 #function powerline_precmd() {
@@ -100,7 +104,7 @@ alias lt='ls --tree'
 alias :q='exit'
 
 #BROWSER
-export BROWSER=$(which firefox)
+export BROWSER=$(which vivaldi-stable)
 
 # zplug読み込み
 source /usr/share/zsh/scripts/zplug/init.zsh
@@ -168,7 +172,7 @@ fda() {
   dir=$(find ${1:-.} -type d,l 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# source /usr/share/doc/pkgfile/command-not-found.zsh
 
 #add completions
 fpath=(~/dotfiles/zshcompletion $fpath)
@@ -178,3 +182,5 @@ eval "$(starship init zsh)"
 
 # asdf
 source /opt/asdf-vm/asdf.sh
+
+
