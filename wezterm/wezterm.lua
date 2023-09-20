@@ -5,7 +5,12 @@ require 'status'
 return{
     enable_wayland = true,
     font = wezterm.font("Firege35Nerd Console") ,
-    font_size = 11,
+    font = wezterm.font_with_fallback {
+        'JetBrainsMonoNLNerdFont',
+        'Fira Code',
+        'DengXian',
+    },
+    font_size = 15,
     line_height = 1.0,
     text_background_opacity = 0.8,
     --color_scheme = "Nocturnal Winter",
@@ -14,7 +19,7 @@ return{
     hide_tab_bar_if_only_one_tab = false,
     status_update_interval = 1000,
     window_frame = {
-        font_size = 9,
+        font_size = 13,
         active_titlebar_bg = '#333333',
         inactive_titlebar_bg = '#333333',
     },
