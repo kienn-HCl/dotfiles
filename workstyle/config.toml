@@ -1,0 +1,72 @@
+# Config for workstyle
+#
+# Format:
+# "pattern" = "icon"
+#
+# The pattern will be used to match against the application name, class_id or WM_CLASS.
+# The icon will be used to represent that application.
+#
+# Note if multiple patterns are present in the same application name,
+# precedence is given in order of apparition in this file.
+
+"alacritty" = ""
+"github" = ""
+"rust" = ""
+"google" = ""
+"private browsing" = ""
+"firefox" = ""
+"chrome" = ""
+"file manager" = ""
+"libreoffice calc" = ""
+"libreoffice writer" = ""
+"libreoffice" = ""
+"nvim" = ""
+"gthumb" = ""
+"menu" = ""
+"calculator" = ""
+"transmission" = ""
+"videostream" = ""
+"mpv" = ""
+"music" = ""
+"disk usage" = ""
+".pdf" = ""
+
+
+'discord' = ''
+'balena-etcher' = ''
+'Chia Blockchain' = ''
+'Steam' = ''
+'vlc' = ''
+'org.qbittorrent.qBittorrent' = ''
+'Thunderbird' = ''
+'thunderbird' = ''
+'Postman' = ''
+'Insomnia' = ''
+'Bitwarden' = ''
+'Google-chrome' = ''
+'Chromium' = ''
+'vivaldi-stable' = ''
+'Slack' = ''
+'Code' = ''
+'code-oss' = ''
+'jetbrains-studio' = ''
+'Spotify' = ''
+'GitHub Desktop' = ''
+'/(?i)Github.*Firefox/' = ''
+'Nightly' = ''
+'firefoxdeveloperedition' = ''
+'/npm/' = ''
+'/node/' = ''
+'/yarn/' = ''
+'Alacritty' = ''
+'org.wezfurlong.wezterm' = ''
+'YouTube' = ''
+'vivaldi-agimnkijcaahngcdmfeangaknmldooml-Default' =  ''
+'vivaldi-cinhimbnkkaeohfgghhklpknlkffjgod-Default' = ''
+'org.pipewire.Helvum' = '󱡫'
+'thunar' = ''
+
+[other]
+fallback_icon = " "
+deduplicate_icons = false
+separator = ": "
