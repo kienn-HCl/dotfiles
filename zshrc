@@ -159,12 +159,12 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 # fd - cd to selected directory
-fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d,l -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
+# fd() {
+#   local dir
+#   dir=$(find ${1:-.} -path '*/\.*' -prune \
+#                   -o -type d,l -print 2> /dev/null | fzf +m) &&
+#   cd "$dir"
+# }
 
 # fda - including hidden directories
 fda() {
@@ -183,8 +183,8 @@ eval "$(starship init zsh)"
 # asdf
 #source /opt/asdf-vm/asdf.sh
 
+# rtx
+eval "$(rtx activate zsh)"
 
 eval "$(sheldon source)"
 
-# rtx
-eval "$(rtx activate zsh)"
