@@ -67,7 +67,7 @@ setopt hist_verify
 #GO
 #export PATH=$PATH:/usr/local/go/bin
 #export GOPATH=$HOME/go
-#export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/go/bin
 #export PATH=$PATH:~/go/bin
 
 #powerline
@@ -104,35 +104,35 @@ alias lt='ls --tree'
 alias :q='exit'
 
 #BROWSER
-export BROWSER=$(which vivaldi-stable)
+# export BROWSER=$(which vivaldi-stable)
 
-# zplug読み込み
-source /usr/share/zsh/scripts/zplug/init.zsh
-
-## ここにプラグインを書き込む ##
-#コマンドのハイライト
-zplug "zsh-users/zsh-syntax-highlighting"
-
-#過去履歴強化
-zplug "zsh-users/zsh-history-substring-search"
-
-#履歴サジェスト
-zplug "zsh-users/zsh-autosuggestions"
-
-#補完強化
-zplug "zsh-users/zsh-completions"
-
-#cdの強化
-#zplug "b4b4r07/enhancd", use:init.sh
-
-# インストールされていないプラグインがあったらインストールする
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-zplug load
+## zplug読み込み
+#source /usr/share/zsh/scripts/zplug/init.zsh
+#
+### ここにプラグインを書き込む ##
+##コマンドのハイライト
+#zplug "zsh-users/zsh-syntax-highlighting"
+#
+##過去履歴強化
+#zplug "zsh-users/zsh-history-substring-search"
+#
+##履歴サジェスト
+#zplug "zsh-users/zsh-autosuggestions"
+#
+##補完強化
+#zplug "zsh-users/zsh-completions"
+#
+##cdの強化
+##zplug "b4b4r07/enhancd", use:init.sh
+#
+## インストールされていないプラグインがあったらインストールする
+#if ! zplug check --verbose; then
+#  printf "Install? [y/N]: "
+#  if read -q; then
+#    echo; zplug install
+#  fi
+#fi
+#zplug load
 
 # シェル操作をvim互換にする
 #bindkey -v
@@ -181,6 +181,10 @@ fpath=(~/dotfiles/zshcompletion $fpath)
 eval "$(starship init zsh)"
 
 # asdf
-source /opt/asdf-vm/asdf.sh
+#source /opt/asdf-vm/asdf.sh
 
 
+eval "$(sheldon source)"
+
+# rtx
+eval "$(rtx activate zsh)"
