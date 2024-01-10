@@ -1,0 +1,35 @@
+{
+    "label" : "hyprlock",
+    "action" : "$HOME/.bin/hyprlock-corrupter -fFkl -c 000000",
+    "text" : "Hyprlock",
+    "keybind" : "h"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend",
+    "keybind" : "s"
+}
+{
+    "label" : "poweroff",
+    "action" : "systemctl poweroff",
+    "text" : "Poweroff",
+    "keybind" : "p"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl terminate-user $USER",
+    "text" : "Logout",
+    "keybind" : "l"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
+{
+    "label" : "quit",
+    "text" : "Quit",
+    "keybind" : "q"
+}
