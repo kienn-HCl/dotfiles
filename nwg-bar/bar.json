@@ -5,11 +5,6 @@
         "icon": "/usr/share/nwg-bar/images/system-lock-screen.svg"
     },
     {
-        "label" : "Suspend",
-        "exec" : "systemctl suspend",
-        "icon": "/usr/share/nwg-bar/images/system-suspend.svg"
-    },
-    {
         "label" : "Poweroff",
         "exec": "systemctl -i poweroff",
         "icon": "/usr/share/nwg-bar/images/system-shutdown.svg"
