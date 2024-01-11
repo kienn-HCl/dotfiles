@@ -1,0 +1,36 @@
+window {
+	border-radius: 10px;
+	background-color: rgba (0, 0, 0, 0.85);
+}
+
+/* Outer bar container, takes all the window width/height */
+#outer-box {
+	margin: 3px
+}
+
+/* Inner bar container, surrounds buttons */
+#inner-box {
+	background-color: #202020;
+	border-radius: 10px;
+	border-style: none;
+	border-width: 1px;
+	border-color: rgba (156, 142, 122, 0.7);
+	padding: 5px;
+	margin: 5px
+}
+
+button, image {
+	background: none;
+	border: none;
+	box-shadow: none
+}
+
+button {
+	font: 30px Sans;
+	border-radius: 10px;
+	margin: 5px
+}
+
+button:focus {
+	background-color: #7A791D;
+}
