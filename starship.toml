@@ -77,7 +77,7 @@ show_always = true
 [hostname]
 ssh_only = false
 style = "fg:#e3e5e5 bg:#565a6e"
-format = '[$ssh_symbol](bold blue)[ $hostname]($style)'
+format = '[ $ssh_symbol]($style)(bold blue)[$hostname]($style)'
 trim_at = '.companyname.com'
 disabled = false
 
