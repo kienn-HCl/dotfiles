@@ -183,8 +183,8 @@ eval "$(starship init zsh)"
 # asdf
 #source /opt/asdf-vm/asdf.sh
 
-# rtx
-eval "$(rtx activate zsh)"
+# mise
+eval "$(mise activate zsh)"
 
 eval "$(sheldon source)"
 
