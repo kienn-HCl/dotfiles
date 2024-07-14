@@ -1,12 +1,12 @@
-vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Down>', 'gj', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Up>', 'gk', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set('n', '<Down>', 'gj')
+vim.keymap.set('n', '<Up>', 'gk')
+vim.keymap.set('n', 'gj', 'j')
+vim.keymap.set('n', 'gk', 'k')
 
 -- escape
-vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set('i', 'jj', '<Esc>', { silent = true })
 
 -- search hilight off
-vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':nohl<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Esc><Esc>', ':nohl<CR>', { silent = true })

@@ -80,7 +80,7 @@ return {
     {
         "akinsho/bufferline.nvim",
         version = "*",
-        dependencies = "nvim-tree/nvim-web-devicons",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             vim.o.termguicolors = true
             vim.o.mousemoveevent = true
