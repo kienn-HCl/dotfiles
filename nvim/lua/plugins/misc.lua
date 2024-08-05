@@ -4,6 +4,7 @@ return {
         event = "VeryLazy",
         config = function()
             require('which-key').setup({
+                preset = "helix",
                 delay = function(ctx)
                     return ctx.plugin and 0 or 1000
                 end,
@@ -98,5 +99,32 @@ return {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require 'colorizer'.setup({
+                '*';
+            }, {
+                rgb_fn = true;
+            })
+        end,
+    },
+    {
+        "segeljakt/vim-silicon",
+        config = function()
+            vim.g['silicon'] = {
+                theme = "gruvbox-dark",
+                background = "#b8bb26",
+            }
+        end,
+    },
+    {
+        "skanehira/denops-translate.vim",
+        dependencies = { "vim-denops/denops.vim" },
+        config = function()
+            vim.g['translate_target'] = 'ja'
+            vim.g['translate_source'] = 'en'
+        end,
     },
 }
