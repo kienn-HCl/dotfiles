@@ -20,6 +20,8 @@ vim.o.cursorline = true
 vim.o.list = true
 vim.o.listchars = 'tab:»-,trail:-,nbsp:%,eol:↲'
 
+vim.o.signcolumn = 'yes'
+
 -- search
 vim.o.incsearch = true
 vim.o.ignorecase = true

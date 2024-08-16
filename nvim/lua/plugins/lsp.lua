@@ -9,7 +9,7 @@ return {
         event = "VeryLazy",
         dependencies = { "williamboman/mason.nvim" },
         config = function()
-            require("mason-lspconfig").setup{
+            require("mason-lspconfig").setup {
                 ensure_installed = {
                     "lua_ls",
                     "rust_analyzer",
@@ -21,7 +21,7 @@ return {
                 -- The first entry (without a key) will be the default handler
                 -- and will be called for each installed server that doesn't have
                 -- a dedicated handler.
-                function (server_name) -- default handler (optional)
+                function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {}
                 end,
                 -- Next, you can provide a dedicated handler for specific servers.
@@ -39,7 +39,7 @@ return {
         config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(_)
-                    vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+                    vim.keymap.set('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
                     vim.keymap.set('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>')
                     vim.keymap.set('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>')
                     vim.keymap.set('n', '<leader>D', '<cmd>lua vim.lsp.buf.declaration()<CR>')

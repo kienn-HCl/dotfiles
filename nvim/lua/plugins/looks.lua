@@ -1,16 +1,16 @@
 return {
---     {
---         "folke/tokyonight.nvim",
---         lazy = false, -- make sure we load this during startup if it is your main colorscheme
---         priority = 1000, -- make sure to load this before all the other start plugins
---         config = function()
---         -- load the colorscheme here
---         vim.cmd([[colorscheme tokyonight]])
---         end,
---     },
+    --     {
+    --         "folke/tokyonight.nvim",
+    --         lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    --         priority = 1000, -- make sure to load this before all the other start plugins
+    --         config = function()
+    --         -- load the colorscheme here
+    --         vim.cmd([[colorscheme tokyonight]])
+    --         end,
+    --     },
     {
         "ellisonleao/gruvbox.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
@@ -61,15 +61,15 @@ return {
                 local lines = math.abs(end_line - start_line) + 1
                 return tostring(lines) .. " lines, " .. tostring(chars) .. " characters"
             end
-            require("lualine").setup{
+            require("lualine").setup {
                 options = {
-                    section_separators = { left = '', right = ''},
+                    section_separators = { left = '', right = '' },
                     component_separators = { left = ' ', right = '' },
-                    colored=true
+                    colored = true
                 },
                 sections = {
                     lualine_c = {
-                        'filename','lsp_progress'
+                        'filename', 'lsp_progress'
                     },
                     lualine_x = { 'encoding', 'fileformat', 'filetype' },
                     lualine_z = { selectionCount, 'location' },
@@ -86,14 +86,14 @@ return {
             vim.o.mousemoveevent = true
             vim.api.nvim_set_keymap('n', 'gb', ':BufferLinePick<CR>', { noremap = true, silent = true })
             vim.api.nvim_set_keymap('n', 'gB', ':BufferLinePickClose<CR>', { noremap = true, silent = true })
-            require("bufferline").setup{
+            require("bufferline").setup {
                 options = {
                     separator_style = "slant",
                     numbers = "ordinal",
                     hover = {
                         enabled = true,
                         delay = 100,
-                        reveal = {'close'}
+                        reveal = { 'close' }
                     },
                     indicator = {
                         style = 'underline'
