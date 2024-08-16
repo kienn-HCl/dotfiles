@@ -40,7 +40,7 @@ return {
     {
         "machakann/vim-sandwich",
         config = function()
-            vim.g["sandwich#recipes"] = vim.list_extend(vim.deepcopy(vim.g["sandwich#default_recipes"]),{})
+            vim.g["sandwich#recipes"] = vim.list_extend(vim.deepcopy(vim.g["sandwich#default_recipes"]), {})
         end,
     },
     {
@@ -52,28 +52,28 @@ return {
             }
         },
         keys = {
-            { "ss", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+            { "ss",    mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
     {
         "vim-skk/skkeleton",
-        dependencies = { "vim-denops/denops.vim","rinx/cmp-skkeleton"  },
+        dependencies = { "vim-denops/denops.vim", "rinx/cmp-skkeleton" },
         keys = {
-            { "<C-j>", mode = { "i", "c", "t" }, "<Plug>(skkeleton-toggle)" , desc = "Toggle skkeleton" },
+            { "<C-j>", mode = { "i", "c", "t" }, "<Plug>(skkeleton-toggle)", desc = "Toggle skkeleton" },
         },
         config = function()
-            vim.fn["skkeleton#config"]{
+            vim.fn["skkeleton#config"] {
                 globalDictionaries = {
-                    {'/usr/share/skk/SKK-JISYO.L', 'euc-jp'},
-                    {'/usr/share/skk/SKK-JISYO.jinmei', 'euc-jp'},
-                    {'/usr/share/skk/SKK-JISYO.geo', 'euc-jp'},
-                    {'/usr/share/skk/SKK-JISYO.propernoun', 'euc-jp'},
-                    {'/usr/share/skk/SKK-JISYO.station', 'euc-jp'},
-                    {'/usr/share/skk/SKK-JISYO.okinawa', 'euc-jp'},
+                    { '/usr/share/skk/SKK-JISYO.L',          'euc-jp' },
+                    { '/usr/share/skk/SKK-JISYO.jinmei',     'euc-jp' },
+                    { '/usr/share/skk/SKK-JISYO.geo',        'euc-jp' },
+                    { '/usr/share/skk/SKK-JISYO.propernoun', 'euc-jp' },
+                    { '/usr/share/skk/SKK-JISYO.station',    'euc-jp' },
+                    { '/usr/share/skk/SKK-JISYO.okinawa',    'euc-jp' },
                 }
             }
         end,
@@ -86,10 +86,10 @@ return {
         dependencies = { "vim-denops/denops.vim" },
         event = "VeryLazy",
         keys = {
-            { "<C-a>", mode = { "n", "x" }, "<Plug>(dps-dial-increment)" , desc = "カーソルの下または後の数字またはアルファベットに[count] を加える。" },
-            { "<C-x>", mode = { "n", "x" }, "<Plug>(dps-dial-decrement)" , desc = "カーソルの下または後の数字またはアルファベットから[count] を減じる。" },
-            { "g<C-a>", mode = { "n", "x" }, "g<Plug>(dps-dial-increment)" , desc = "カーソルの下または後の数字またはアルファベットに[count] を加える。" },
-            { "g<C-x>", mode = { "n", "x" }, "g<Plug>(dps-dial-decrement)" , desc = "カーソルの下または後の数字またはアルファベットから[count] を減じる。" },
+            { "<C-a>", mode = { "n", "x" }, "<Plug>(dps-dial-increment)", desc = "カーソルの下または後の数字またはアルファベットに[count] を加える。" },
+            { "<C-x>", mode = { "n", "x" }, "<Plug>(dps-dial-decrement)", desc = "カーソルの下または後の数字またはアルファベットから[count] を減じる。" },
+            { "g<C-a>", mode = { "n", "x" }, "g<Plug>(dps-dial-increment)", desc = "カーソルの下または後の数字またはアルファベットに[count] を加える。" },
+            { "g<C-x>", mode = { "n", "x" }, "g<Plug>(dps-dial-decrement)", desc = "カーソルの下または後の数字またはアルファベットから[count] を減じる。" },
         },
     },
     {
@@ -104,9 +104,9 @@ return {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require 'colorizer'.setup({
-                '*';
+                '*',
             }, {
-                rgb_fn = true;
+                rgb_fn = true,
             })
         end,
     },
@@ -126,5 +126,48 @@ return {
             vim.g['translate_target'] = 'ja'
             vim.g['translate_source'] = 'en'
         end,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
+        opts = {
+            current_line_blame_opts = {
+                delay = 0,
+            },
+        },
+    },
+    {
+        "thinca/vim-qfreplace",
+        event = "VeryLazy",
+    },
+    {
+        "thinca/vim-ambicmd",
+        config = function()
+            vim.keymap.set('c', '<space>', [[ambicmd#expand("\<Space>")]], { expr = true })
+            vim.keymap.set('c', '<CR>', [[ambicmd#expand("\<CR>")]], { expr = true })
+        end
+    },
+    {
+        "tommcdo/vim-exchange",
+    },
+    {
+        "simeji/winresizer",
+        config = function()
+            vim.keymap.set('n', '<leader>wr', ':WinResizerStartResize<CR>')
+            vim.keymap.set('n', '<leader>wm', ':WinResizerStartMove<CR>')
+            vim.keymap.set('n', '<leader>wf', ':WinResizerStartFocus<CR>')
+        end
+    },
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        opts = {
+            shade_terminals = true,
+            open_mapping = [[<leader>t]],
+            direction = 'float',
+            float_opts = {
+                border = 'curved',
+            },
+        }
     },
 }
