@@ -62,6 +62,7 @@ return {
     {
         "vim-skk/skkeleton",
         dependencies = { "vim-denops/denops.vim", "rinx/cmp-skkeleton" },
+        event = "VeryLazy",
         keys = {
             { "<C-j>", mode = { "i", "c", "t" }, "<Plug>(skkeleton-toggle)", desc = "Toggle skkeleton" },
         },
@@ -151,19 +152,11 @@ return {
         "tommcdo/vim-exchange",
     },
     {
-        "simeji/winresizer",
-        config = function()
-            vim.keymap.set('n', '<leader>wr', ':WinResizerStartResize<CR>')
-            vim.keymap.set('n', '<leader>wm', ':WinResizerStartMove<CR>')
-            vim.keymap.set('n', '<leader>wf', ':WinResizerStartFocus<CR>')
-        end
-    },
-    {
         "akinsho/toggleterm.nvim",
         version = "*",
         opts = {
             shade_terminals = true,
-            open_mapping = [[<leader>t]],
+            open_mapping = [[<leader>tt]],
             direction = 'float',
             float_opts = {
                 border = 'curved',
