@@ -10,4 +10,3 @@ vim.keymap.set('i', 'jj', '<Esc>', { silent = true })
 
 -- search hilight off
 vim.keymap.set('n', '<Esc><Esc>', ':nohl<CR>', { silent = true })
-

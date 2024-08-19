@@ -30,14 +30,14 @@ vim.o.hlsearch = true
 
 -- manipulation
 vim.g.mapleader = ' '
-vim.opt.clipboard:append{'unnamedplus'}
+vim.opt.clipboard:append { 'unnamedplus' }
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50
 
 vim.o.undofile = true
 vim.o.undodir = vim.fn.stdpath('cache') .. '/undo'
 
-vim.o.helplang = 'ja','en'
+vim.o.helplang = 'ja', 'en'
 
 require("config.keymap")
 require("config.lazy")
