@@ -21,6 +21,7 @@ vim.o.list = true
 vim.o.listchars = 'tab:»-,trail:-,nbsp:%,eol:↲'
 
 vim.o.signcolumn = 'yes'
+vim.o.laststatus = 3
 
 -- search
 vim.o.incsearch = true
