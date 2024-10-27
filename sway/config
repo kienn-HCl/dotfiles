@@ -1,79 +1,37 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
+
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term wezterm
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu sirula swaymsg exec --
 
-font pango:monospace 8
+set $term foot
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+set $rofi_cmd rofi \
+        -terminal '$term'
+set $menu $rofi_cmd -show combi -combi-modes drun
 
+# font pango:monospace 8
 
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output 'Unknown 0x05E0 0x00000000' scale 1.1
+# output 'Unknown 0x05E0 0x00000000' scale 1.1
 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
- exec swayidle -w \
+exec swayidle -w \
           timeout 600 'swaylock -fFkl -c 000000' \
           timeout 610 'swaymsg "output * dpms off"' \
           resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
 
 bindsym $mod+p exec swaylock -fFkl -c 000011
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 input "type:keyboard" {
-    xkb_layout "jp"
-    xkb_options ctrl:nocaps
+    xkb_layout "jp,us"
+    xkb_options ctrl:nocaps,grp:shifts_toggle
 }
 
 input type:touchpad {
@@ -93,11 +51,6 @@ input type:touchpad {
     # Start your launcher
     bindsym $mod+d exec $menu
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod normal
 
     # Reload the configuration file
@@ -166,7 +119,7 @@ input type:touchpad {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -218,28 +171,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
 bar swaybar_command waybar
 
-include /etc/sway/config.d/*
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
-exec --no-startup-id fcitx5 -d
+# exec --no-startup-id fcitx5 -d
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -255,7 +191,6 @@ bindsym XF86Search exec bemenu-run
 exec wl-paste -t text --watch clipman store
 # exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 
-exec --no-startup-id wl-gammactl -c 1 -b 0.95 -g 0.9
 bindsym $mod+Shift+e exec wlogout
 
-exec --no-startup-id swww init && ~/bin/swww_wallpaper.sh ~/Pictures/archlinux
+# exec --no-startup-id swww init && ~/bin/swww_wallpaper.sh ~/Pictures/archlinux
