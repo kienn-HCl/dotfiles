@@ -67,9 +67,10 @@
       target = ".zshrc";
       source = ./zshrc;
     };
-    "sway/config" = {
-      target = ".config/sway/config";
-      source = ./sway/config;
+    "sway" = {
+      target = ".config/sway/";
+      source = ./sway ;
+      recursive = true;
     };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
