@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-{
+rec {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   nixpkgs.config.allowUnfree = true;
@@ -104,12 +104,11 @@
   };
 
   programs.starship.enable = true;
-  home.file.".config/starship.toml" = {
-    source = ./starship.toml;
-  };
+  home.file.".config/starship.toml".source = ./starship.toml ;
 
   imports = [
     ./zsh.nix
+    ./rofi.nix
   ];
 
   # Home Manager can also manage your environment variables through
@@ -130,6 +129,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    XDG_CONFIG_HOME = "${home.homeDirectory}/.config";
   };
 
   # Let Home Manager install and manage itself.
