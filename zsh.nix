@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   programs.zsh = {
-    enable = false;
+    enable = true;
     initExtraFirst = ''
-    DIRSTACKSIZE=100
-    setopt auto_pushd
-    setopt pushd_ignore_dups
+      DIRSTACKSIZE=100
+      setopt auto_pushd
+      setopt pushd_ignore_dups
 
-    setopt nolistbeep
-    setopt interactive_comments
-    setopt magic_equal_subst
-    setopt hist_verify
+      setopt nolistbeep
+      setopt interactive_comments
+      setopt magic_equal_subst
+      setopt hist_verify
     '';
     autocd = true;
     autosuggestion.enable = true;
@@ -52,15 +52,17 @@
         "rm *" = "fg=white,bold,bg=red";
       };
       styles = {
-        autodirectory = "fg=white,bg=green";
+        autodirectory = "fg=brack,bg=green";
         bracket-level-1 = "fg=blue,bold";
         bracket-level-2 = "fg=green,bold";
         bracket-level-3 = "fg=yellow,bold";
         bracket-level-4 = "fg=magenta,bold";
-      }
+      };
     };
     initExtra = ''
-    . ${pkgs.fzf}/share/fzf/*.zsh
-    ''
+      for p in ${pkgs.fzf}/share/fzf/*.zsh; do
+        . $p
+      done
+    '';
   };
 }
