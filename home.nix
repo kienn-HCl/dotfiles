@@ -3,7 +3,6 @@
 rec {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  nixpkgs.config.allowUnfree = true;
   home.username = "frort";
   home.homeDirectory = "/home/frort";
 
@@ -71,11 +70,14 @@ rec {
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-    ".config/sway" = {
+  xdg.configFile = {
+    "rofi".source = ./rofi ;
+    "sway" = {
       source = ./sway ;
       onChange = "/usr/bin/swaymsg reload";
     };
+  };
+  home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
