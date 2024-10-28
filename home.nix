@@ -3,6 +3,7 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
+  nixpkgs.config.allowUnfree = true;
   home.username = "frort";
   home.homeDirectory = "/home/frort";
 
@@ -65,7 +66,7 @@
   home.file = {
     ".config/sway" = {
       source = ./sway ;
-      onChange = "swaymsg reload"
+      onChange = "/usr/bin/swaymsg reload";
     };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
