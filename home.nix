@@ -103,12 +103,10 @@ rec {
     };
   };
 
-  programs.starship.enable = true;
-  home.file.".config/starship.toml".source = ./starship.toml ;
-
   imports = [
     ./zsh.nix
     ./rofi.nix
+    ./starship.nix
   ];
 
   # Home Manager can also manage your environment variables through
