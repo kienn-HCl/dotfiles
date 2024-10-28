@@ -46,6 +46,14 @@ rec {
 
     go
     deno
+    (rust-bin.stable.latest.default.override {
+      # target = ["wasm32-unknown-unknown" "wasm32-wasi"];
+    })
+
+    discord
+    slack
+    zulip
+    spotify
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
