@@ -60,6 +60,9 @@
       };
     };
     initExtra = ''
+      if [[ -f "$HOME/.zsh/plugins/zsh-abbr//share/zsh/zsh-abbr/zsh-abbr.zsh" ]]; then
+        source "$HOME/.zsh/plugins/zsh-abbr//share/zsh/zsh-abbr/zsh-abbr.zsh"
+      fi
       for p in ${pkgs.fzf}/share/fzf/*.zsh; do
         . $p
       done

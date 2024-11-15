@@ -24,6 +24,8 @@
     in {
       homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+        };
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
