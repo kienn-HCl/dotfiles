@@ -12,9 +12,13 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, rust-overlay, ... }:
+  outputs = { nixpkgs, home-manager, rust-overlay, nixgl, ... }:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -25,6 +29,7 @@
       homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
+          inherit nixgl;
         };
 
         # Specify your home configuration modules here, for example,
