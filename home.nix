@@ -70,7 +70,6 @@ rec {
     # pkgs.hello
 
     git
-    lazygit
     bat
     lsd
     tree
@@ -173,6 +172,7 @@ rec {
     ./zsh.nix
     ./rofi.nix
     ./starship.nix
+    ./lazygit.nix
   ];
 
   # Home Manager can also manage your environment variables through
