@@ -74,8 +74,6 @@ rec {
     bat
     lsd
     tree
-    starship
-    delta
     fzf
     fd
     vim
@@ -85,6 +83,11 @@ rec {
     ffmpeg
     difftastic
     silicon
+    cliphist
+    screen
+
+    pdfcpu
+    gnuplot
 
     noto-fonts
     noto-fonts-cjk-sans
@@ -101,9 +104,10 @@ rec {
     slack
     zulip
     spotify
+    zathura
+    nwg-displays
 
-    gnuplot
-
+    xwayland-satellite
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
