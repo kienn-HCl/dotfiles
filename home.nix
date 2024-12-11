@@ -1,4 +1,9 @@
-{ config, pkgs, lib, nixgl, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 rec {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -17,7 +22,7 @@ rec {
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  nixGL.packages = nixgl.packages;
+  nixGL.packages = inputs.nixgl.packages;
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap hyprland)
     (pkgs.writeShellScriptBin "set-hyprland-session" ''
@@ -105,6 +110,7 @@ rec {
     spotify
     zathura
     nwg-displays
+    nur.repos.zzzsy.zen-browser
 
     xwayland-satellite
     # # It is sometimes useful to fine-tune packages, for example, by applying

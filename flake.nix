@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,18 +19,28 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, rust-overlay, nixgl, ... }:
+  outputs = {
+    self,
+    nixpkgs,
+    nur,
+    home-manager,
+    rust-overlay,
+    nixgl,
+  } @ inputs:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
-        overlays = [ rust-overlay.overlays.default ];
+        overlays = [
+          rust-overlay.overlays.default
+          nur.overlay
+        ];
       };
     in {
       homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit nixgl;
+          inherit inputs;
         };
 
         # Specify your home configuration modules here, for example,
