@@ -21,7 +21,6 @@
       ignoreAllDups = true;
     };
     sessionVariables = {
-      PATH = "$PATH:$HOME/go/bin";
       ABBR_SET_EXPANSION_CURSOR = 1;
     };
     shellAliases = {

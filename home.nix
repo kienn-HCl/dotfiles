@@ -141,6 +141,10 @@ rec {
   #
   #  /etc/profiles/per-user/frort/etc/profile.d/hm-session-vars.sh
   #
+  home.sessionPath= [
+    "$HOME/go/bin"
+    "$HOME/.local/bin"
+  ];
   home.sessionVariables = {
     # EDITOR = "emacs";
     XDG_CONFIG_HOME = "${home.homeDirectory}/.config";
