@@ -26,48 +26,48 @@ rec {
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap hyprland)
     (pkgs.writeShellScriptBin "set-hyprland-session" ''
-        case $1 in
-            add)
-                sudo cp ${pkgs.hyprland}/share/wayland-sessions/hyprland.desktop /usr/share/wayland-sessions/
-                ;;
-            delete)
-                sudo rm /usr/share/wayland-sessions/hyprland.desktop
-                ;;
-            *)
-                echo "Usage: $(basename $0) (add|delete)"
-                exit 1
-                ;;
-        esac
+      case $1 in
+          add)
+              sudo cp ${pkgs.hyprland}/share/wayland-sessions/hyprland.desktop /usr/share/wayland-sessions/
+              ;;
+          delete)
+              sudo rm /usr/share/wayland-sessions/hyprland.desktop
+              ;;
+          *)
+              echo "Usage: $(basename $0) (add|delete)"
+              exit 1
+              ;;
+      esac
     '')
     (config.lib.nixGL.wrap niri)
     (pkgs.writeShellScriptBin "set-niri-session" ''
-        case $1 in
-            add)
-                sudo cp ${pkgs.niri}/share/wayland-sessions/niri.desktop /usr/share/wayland-sessions/
-                ;;
-            delete)
-                sudo rm /usr/share/wayland-sessions/niri.desktop
-                ;;
-            *)
-                echo "Usage: $(basename $0) (add|delete)"
-                exit 1
-                ;;
-        esac
+      case $1 in
+          add)
+              sudo cp ${pkgs.niri}/share/wayland-sessions/niri.desktop /usr/share/wayland-sessions/
+              ;;
+          delete)
+              sudo rm /usr/share/wayland-sessions/niri.desktop
+              ;;
+          *)
+              echo "Usage: $(basename $0) (add|delete)"
+              exit 1
+              ;;
+      esac
     '')
     (config.lib.nixGL.wrap river)
     (pkgs.writeShellScriptBin "set-river-session" ''
-        case $1 in
-            add)
-                sudo cp ${pkgs.river}/share/wayland-sessions/river.desktop /usr/share/wayland-sessions/
-                ;;
-            delete)
-                sudo rm /usr/share/wayland-sessions/river.desktop
-                ;;
-            *)
-                echo "Usage: $(basename $0) (add|delete)"
-                exit 1
-                ;;
-        esac
+      case $1 in
+          add)
+              sudo cp ${pkgs.river}/share/wayland-sessions/river.desktop /usr/share/wayland-sessions/
+              ;;
+          delete)
+              sudo rm /usr/share/wayland-sessions/river.desktop
+              ;;
+          *)
+              echo "Usage: $(basename $0) (add|delete)"
+              exit 1
+              ;;
+      esac
     '')
 
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -130,15 +130,15 @@ rec {
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   xdg.configFile = {
-    "rofi".source = ./rofi ;
+    "rofi".source = ./rofi;
     "sway" = {
-      source = ./sway ;
+      source = ./sway;
       onChange = "/usr/bin/swaymsg reload";
     };
   };
   home.file = {
-    ".local/share/systemd/user/niri-shutdown.target".source = "${pkgs.niri}/share/systemd/user/niri-shutdown.target" ;
-    ".local/share/systemd/user/niri.service".source = "${pkgs.niri}/share/systemd/user/niri.service" ;
+    ".local/share/systemd/user/niri-shutdown.target".source = "${pkgs.niri}/share/systemd/user/niri-shutdown.target";
+    ".local/share/systemd/user/niri.service".source = "${pkgs.niri}/share/systemd/user/niri.service";
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -197,7 +197,7 @@ rec {
   #
   #  /etc/profiles/per-user/frort/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionPath= [
+  home.sessionPath = [
     "$HOME/go/bin"
     "$HOME/.local/bin"
   ];

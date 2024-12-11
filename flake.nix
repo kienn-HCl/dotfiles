@@ -19,14 +19,15 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nur,
-    home-manager,
-    rust-overlay,
-    nixgl,
-  } @ inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nur,
+      home-manager,
+      rust-overlay,
+      nixgl,
+    }@inputs:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -36,7 +37,9 @@
           nur.overlay
         ];
       };
-    in {
+    in
+    {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
