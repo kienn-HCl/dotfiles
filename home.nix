@@ -90,6 +90,7 @@ rec {
     ./lazygit.nix
     ./hyprland.nix
     ./niri.nix
+    ./foot.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
