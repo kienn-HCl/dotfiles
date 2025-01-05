@@ -28,6 +28,7 @@ rec {
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    nixgl.auto.nixGLDefault
 
     git
     bat
@@ -66,6 +67,8 @@ rec {
     zathura
     nwg-displays
     nur.repos.zzzsy.zen-browser
+    (config.lib.nixGL.wrap pkgs.bambu-studio)
+    (config.lib.nixGL.wrap pkgs.openscad-unstable)
 
     xwayland-satellite
     # # It is sometimes useful to fine-tune packages, for example, by applying

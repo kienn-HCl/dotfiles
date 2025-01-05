@@ -35,6 +35,7 @@
         overlays = [
           rust-overlay.overlays.default
           nur.overlay
+          nixgl.overlay
         ];
       };
     in
