@@ -27,12 +27,18 @@ rec {
   };
 
   nixGL.packages = inputs.nixgl.packages;
+  nixGL.defaultWrapper = "nvidiaPrime";
+  nixGL.installScripts = [
+    "nvidia"
+    "mesa"
+  ];
   home.packages = with pkgs; [
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    nixgl.auto.nixGLDefault
+    # nixgl.auto.nixGLDefault
+    # nixgl.auto.nixGLNvidia
 
     git
     bat
