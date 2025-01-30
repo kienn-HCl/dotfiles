@@ -21,6 +21,10 @@ rec {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
 
   nixGL.packages = inputs.nixgl.packages;
   home.packages = with pkgs; [
