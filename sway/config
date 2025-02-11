@@ -28,5 +28,6 @@ input type:touchpad {
     tap enabled
 }
 
-include '$(/usr/libexec/sway/layered-include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+#include '$(/usr/libexec/sway/layered-include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf"
 
