@@ -1,9 +1,13 @@
 { pkgs, config, ... }:
 {
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     package = config.lib.nixGL.wrap pkgs.hyprland;
     extraConfig = builtins.readFile ./hypr/hyprland.conf;
+  };
+  xdg.configFile."hypr" = {
+    source = ./hypr;
+    recursive = true;
   };
   home.packages = [
     (pkgs.writeShellScriptBin "set-hyprland-session" ''

@@ -117,6 +117,7 @@ rec {
     "sway" = {
       source = ./sway;
       onChange = "/usr/bin/swaymsg reload";
+      recursive = true;
     };
   };
   home.file = {
