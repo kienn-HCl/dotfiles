@@ -5,6 +5,18 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen-beta$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="Firefox — Sharing Indicator"
+    match app-id=r#"zen-beta$"# title="Firefox — Sharing Indicator"
+    open-floating true
+}
+
+window-rule {
+    match app-id="pavucontrol$"
     open-floating true
 }
 

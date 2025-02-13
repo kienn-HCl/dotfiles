@@ -1,0 +1,19 @@
+binds {
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume    allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "1%+"; }
+    XF86AudioLowerVolume    allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "1%-"; }
+    XF86AudioMute           allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86AudioPlay   allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioStop   allow-when-locked=true { spawn "playerctl" "stop"; }
+
+    XF86AudioForward    { spawn "playerctl" "position" "+10"; }
+    XF86AudioNext       { spawn "playerctl" "next"; }
+    XF86AudioPause      { spawn "playerctl" "pause"; }
+    XF86AudioPrev       { spawn "playerctl" "previous"; }
+    XF86AudioRewind     { spawn "playerctl" "position" "-10"; }
+
+    XF86MonBrightnessDown   { "sh" "-c" "brightnessctl -q set 5%- && VALUE=$(brightnessctl --percentage get) && notify-send -e -h string:x-canonical-private-synchronous:brightness -h 'int:value:$VALUE' -t 800 'Brightness: ${VALUE}%'" }
+    XF86MonBrightnessUp     { "sh" "-c" "brightnessctl -q set +5% && VALUE=$(brightnessctl --percentage get) && notify-send -e -h string:x-canonical-private-synchronous:brightness -h 'int:value:$VALUE' -t 800 'Brightness: ${VALUE}%'" }
+}
