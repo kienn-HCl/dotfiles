@@ -111,6 +111,7 @@ rec {
     ./hyprland.nix
     ./niri.nix
     ./foot.nix
+    ./mpv.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
