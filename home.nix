@@ -160,6 +160,19 @@ rec {
     XDG_CONFIG_HOME = "${home.homeDirectory}/.config";
   };
 
+  home.keyboard = {
+    layout = "jp,us";
+    options = [
+      "ctrl:nocaps"
+      "grp:shifts_toggle"
+    ];
+  };
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
