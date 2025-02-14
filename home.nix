@@ -55,6 +55,8 @@ rec {
     silicon
     cliphist
     screen
+    yq
+    jq
 
     pdfcpu
     gnuplot
