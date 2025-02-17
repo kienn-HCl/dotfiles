@@ -22,9 +22,9 @@ cat nix-installer.sh | sh -s -- install
 
 ## Home Manager
 ### install
-[Nix](##nix)にある方法でNixが導入されていることが前提。
+[Nix](#nix)にある方法でNixが導入されていることが前提。
 > [!NOTE]
->[Nix](##nix)以外の方法だとflakesが有効化されていない可能性があるので適宜設定すること。
+>[Nix](#nix)以外の方法だとflakesが有効化されていない可能性があるので適宜設定すること。
 ```bash
 git clone git@github.com:kienn-HCl/dotfiles.git ~/.config/home-manager
 nix run home-manager/master -- init --switch --impure
