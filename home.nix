@@ -57,6 +57,7 @@ rec {
     screen
     yq
     jq
+    dex
 
     pdfcpu
     gnuplot
