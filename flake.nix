@@ -29,12 +29,16 @@
       nixgl,
     }@inputs:
     let
+      moz-rev = "master";
+      moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
+      firefoxNightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [
           rust-overlay.overlays.default
           nur.overlay
           nixgl.overlay
+          firefoxNightlyOverlay
         ];
       };
     in

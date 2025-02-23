@@ -113,6 +113,7 @@ rec {
     ./niri.nix
     ./foot.nix
     ./mpv.nix
+    ./firefox.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
