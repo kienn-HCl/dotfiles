@@ -27,8 +27,12 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    // Mod+BracketLeft  { consume-or-expel-window-left; }
+    // Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+BracketLeft { set-column-width "-10%"; }
+    Mod+BracketRight { set-column-width "+10%"; }
+    Mod+Shift+BracketLeft { set-window-height "-10%"; }
+    Mod+Shift+BracketRight { set-window-height "+10%"; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
