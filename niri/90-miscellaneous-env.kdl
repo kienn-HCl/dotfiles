@@ -1,0 +1,4 @@
+environment {
+    // xwayland
+    DISPLAY ":0"
+}

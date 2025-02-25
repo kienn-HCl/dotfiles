@@ -5,3 +5,5 @@
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "waybar"
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store"
+// xwayland
+spawn-at-startup "xwayland-satellite"
