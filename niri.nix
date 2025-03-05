@@ -10,6 +10,10 @@ in
       text = congigFile;
       recursive = true;
     };
+    "niri/script" = {
+      source = ./niri/script;
+      recursive = true;
+    };
   };
   home.packages = [
     # (config.lib.nixGL.wrap pkgs.niri)
