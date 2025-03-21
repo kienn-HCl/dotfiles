@@ -58,6 +58,7 @@ rec {
     yq
     jq
     dex
+    bitwarden-cli
 
     pdfcpu
     gnuplot
