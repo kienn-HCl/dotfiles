@@ -104,28 +104,22 @@ rec {
   ];
 
   imports = [
-    ./git.nix
-    ./zsh.nix
-    ./rofi.nix
-    ./starship.nix
-    ./lazygit.nix
-    ./hyprland.nix
-    ./niri.nix
-    ./foot.nix
-    ./mpv.nix
-    ./firefox.nix
-    ./mimeapps.nix
+    ./git
+    ./zsh
+    ./rofi
+    ./starship
+    ./lazygit
+    ./hyprland
+    ./niri
+    ./foot
+    ./mpv
+    ./firefox
+    ./mimeapps
+    ./sway
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  xdg.configFile = {
-    "sway" = {
-      source = ./sway;
-      onChange = "/usr/bin/swaymsg reload";
-      recursive = true;
-    };
-  };
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a

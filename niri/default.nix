@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   kdlFiles = pkgs.lib.filesystem.listFilesRecursive ./niri;
   filteredKdlFiles = builtins.filter (f: pkgs.lib.strings.hasSuffix ".kdl" (toString f)) kdlFiles;
