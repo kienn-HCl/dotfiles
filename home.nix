@@ -47,7 +47,7 @@ rec {
     fzf
     fd
     vim
-    neovim
+    # neovim
     htop
     gotop
     ffmpeg
