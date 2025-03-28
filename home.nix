@@ -62,6 +62,7 @@ rec {
 
     pdfcpu
     gnuplot
+    platformio
 
     noto-fonts
     noto-fonts-cjk-sans
