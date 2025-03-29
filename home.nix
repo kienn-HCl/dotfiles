@@ -154,12 +154,8 @@ rec {
   #
   home.sessionPath = [
     "$HOME/go/bin"
-    "$HOME/.local/bin"
+    "${config.xdg.dataHome}/bin"
   ];
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-    XDG_CONFIG_HOME = "${home.homeDirectory}/.config";
-  };
 
   home.keyboard = {
     layout = "jp,us";
@@ -169,16 +165,17 @@ rec {
     ];
   };
 
-  xdg = {
-    userDirs ={
-      enable = true;
-      createDirectories = true;
-    };
-    dataFile."Wallpapers" = {
-      source = ./Wallpapers;
-      recursive = true;
-    };
+  xdg.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
   };
+  home.sessionVariables.XDG_DATA_HOME = "${config.xdg.dataHome}";
+  xdg.dataFile."Wallpapers" = {
+    source = ./Wallpapers;
+    recursive = true;
+  };
+  home.sessionVariables.XDG_CONFIG_HOME = "${config.xdg.configHome}";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
