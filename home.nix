@@ -169,9 +169,15 @@ rec {
     ];
   };
 
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
+  xdg = {
+    userDirs ={
+      enable = true;
+      createDirectories = true;
+    };
+    dataFile."Wallpapers" = {
+      source = ./Wallpapers;
+      recursive = true;
+    };
   };
 
   # Let Home Manager install and manage itself.
