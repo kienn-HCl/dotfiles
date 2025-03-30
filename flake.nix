@@ -36,7 +36,7 @@
         system = "x86_64-linux";
         overlays = [
           rust-overlay.overlays.default
-          nur.overlay
+          nur.overlays.default
           nixgl.overlay
           firefoxNightlyOverlay
         ];
