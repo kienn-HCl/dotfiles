@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # For each display, changes the wallpaper to a randomly chosen image in
 # a given directory at a set interval.
 

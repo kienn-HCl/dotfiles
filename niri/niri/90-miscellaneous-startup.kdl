@@ -8,4 +8,4 @@ spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store"
 // xwayland
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
-spawn-at-startup "swww_randomize_multi.sh" "$XDG_DATA_HOME/Wallpapers" "3600"
+spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/script/niri_swww_randomize_multi.sh"
