@@ -81,6 +81,7 @@ rec {
     spotify
     zathura
     nwg-displays
+    obsidian
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
     (config.lib.nixGL.wrap pkgs.openscad-unstable)
     (config.lib.nixGL.wrap pkgs.freecad-wayland)
