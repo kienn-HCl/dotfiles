@@ -5,6 +5,8 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,39 +25,68 @@
     {
       self,
       nixpkgs,
+      flake-parts,
       nur,
       home-manager,
       rust-overlay,
       nixgl,
+      ...
     }@inputs:
     let
       moz-rev = "master";
-      moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
+      moz-url = builtins.fetchTarball {
+        url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";
+      };
       firefoxNightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
         overlays = [
           rust-overlay.overlays.default
           nur.overlays.default
-          nixgl.overlay
+          nixgl.overlays.default
           firefoxNightlyOverlay
         ];
       };
     in
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.treefmt-nix.flakeModule
+        inputs.home-manager.flakeModules.home-manager
+      ];
+      systems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      flake = {
+        homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [ ./home.nix ];
+
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
         };
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
+      perSystem =
+        {
+          config,
+          system,
+          pkgs,
+          ...
+        }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              nixfmt.enable = true;
+            };
+          };
+        };
     };
 }

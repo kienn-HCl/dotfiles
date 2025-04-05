@@ -27,9 +27,9 @@ rec {
   };
 
   nixGL.packages = inputs.nixgl.packages;
-#  nixGL.defaultWrapper = "nvidiaPrime";
+  #  nixGL.defaultWrapper = "nvidiaPrime";
   nixGL.installScripts = [
-#    "nvidia"
+    #    "nvidia"
     "mesa"
   ];
   home.packages = with pkgs; [
@@ -62,7 +62,7 @@ rec {
 
     pdfcpu
     gnuplot
-    platformio
+    # platformio
 
     noto-fonts
     noto-fonts-cjk-sans
