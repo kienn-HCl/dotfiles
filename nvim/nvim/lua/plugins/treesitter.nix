@@ -1,7 +1,10 @@
+{pkgs, ...}:
+{
+  text = ''
 return {
   {
     name = "nvim-treesitter",
-    dir =  "${pkgs.vimPlugins.treesitter-plugin}",
+    dir =  "${pkgs.vimPlugins.nvim-treesitter}",
     event = "BufRead",
     config = function()
       require("nvim-treesitter.configs").setup {
@@ -14,4 +17,6 @@ return {
       }
     end
   },
+}
+  '';
 }

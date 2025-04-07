@@ -1,3 +1,6 @@
+{pkgs,...}:
+{
+  text = ''
 -- Bootstrap lazy.nvim
 local lazypath = "${pkgs.vimPlugins.lazy-nvim}"
 vim.opt.rtp:prepend(lazypath)
@@ -12,3 +15,5 @@ require("lazy").setup({
   -- automatically check for plugin updates
   -- checker = { enabled = true },
 })
+  '';
+}

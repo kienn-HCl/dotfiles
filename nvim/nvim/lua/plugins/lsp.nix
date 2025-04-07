@@ -1,7 +1,10 @@
+{pkgs, ...}:
+{
+  text = ''
 return {
   {
     name = "nvim-lspconfig",
-    dir = "nvim_lspconfig",
+    dir =  "${pkgs.vimPlugins.nvim-lspconfig}",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -22,7 +25,7 @@ return {
         end
       })
 
-      local capabilities = require("cpm_nvim_lsp").default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
       for _, server in ipairs({
         "bashls",
@@ -54,3 +57,6 @@ return {
     end
   },
 }
+  '';
+}
+
