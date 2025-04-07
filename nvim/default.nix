@@ -1,41 +1,5 @@
 { pkgs, ... }:
 let
-  treesitter-plugin =
-    p: with p; [
-      arduino
-      bash
-      c
-      cmake
-      cpp
-      css
-      dockerfile
-      fsharp
-      go
-      haskell
-      helm
-      html
-      hyprlang
-      java
-      lua
-      make
-      markdown
-      markdown_inline
-      nix
-      python
-      racket
-      ruby
-      rust
-      scala
-      scheme
-      sway
-      toml
-      tsx
-      typescript
-      typst
-      vim
-      vimdoc
-      yaml
-    ];
   lsp = with pkgs; [
     # shell
     shellcheck
@@ -88,11 +52,6 @@ in
     enable = true;
     package = pkgs.neovim-unwrapped; # .override { treesitter-parsers = {}; };
     defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins treesitter-plugin)
-      denops-vim
-    ];
     extraPackages = lsp ++ buildInputs;
   };
 }
