@@ -1,6 +1,6 @@
 return {
   {
-    name = "nvimtools/none-ls.nvim",
+    "nvimtools/none-ls.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = { "BufReadPre", "BufNewFile" },
     config = function()

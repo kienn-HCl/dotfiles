@@ -1,40 +1,41 @@
 { pkgs, ... }:
 let
-  treesitter-plugin = p: with p; [
-    arduino
-    bash
-    c
-    cmake
-    cpp
-    css
-    dockerfile
-    fsharp
-    go
-    haskell
-    helm
-    html
-    hyprlang
-    java
-    lua
-    make
-    markdown
-    markdown_inline
-    nix
-    python
-    racket
-    ruby
-    rust
-    scala
-    scheme
-    sway
-    toml
-    tsx
-    typescript
-    typst
-    vim
-    vimdoc
-    yaml
-  ];
+  treesitter-plugin =
+    p: with p; [
+      arduino
+      bash
+      c
+      cmake
+      cpp
+      css
+      dockerfile
+      fsharp
+      go
+      haskell
+      helm
+      html
+      hyprlang
+      java
+      lua
+      make
+      markdown
+      markdown_inline
+      nix
+      python
+      racket
+      ruby
+      rust
+      scala
+      scheme
+      sway
+      toml
+      tsx
+      typescript
+      typst
+      vim
+      vimdoc
+      yaml
+    ];
   lsp = with pkgs; [
     # shell
     shellcheck
@@ -64,18 +65,28 @@ let
     # typst
     tinymist
   ];
-  buildInputs = with pkgs; [deno];
+  buildInputs = with pkgs; [ deno ];
 
-  configFilePaths = pkgs.lib.filesystem.listFilesRecursive ./nvim;
-  configAttr = map (path: { "${removePrefixPath ./. path}".text = builtins.readFile path; }) configFilePaths;
-  configAttrs = pkgs.lib.attrsets.mergeAttrsList configAttr;
-  removePrefixPath = base: path: pkgs.lib.strings.removePrefix (toString base + "/") (toString path);
+  inherit (pkgs.lib) strings filesystem attrsets;
+  configPaths = filesystem.listFilesRecursive ./nvim;
+  luaConfigPaths = builtins.filter (f: strings.hasSuffix ".lua" (toString f)) configPaths;
+  luaConfigAttrs = map (path: {
+    "${removePrefixPath ./. path}".source = path;
+  }) luaConfigPaths;
+  luaConfigAttr = attrsets.mergeAttrsList luaConfigAttrs;
+
+  nixConfigPaths = builtins.filter (f: strings.hasSuffix ".nix" (toString f)) configPaths;
+  nixConfigAttrs = map (path: {
+    "${strings.removeSuffix ".nix" (removePrefixPath ./. path) + ".lua"}".text = (import path {inherit pkgs;}).text;
+  }) nixConfigPaths;
+  nixConfigAttr = attrsets.mergeAttrsList nixConfigAttrs;
+  removePrefixPath = base: path: strings.removePrefix (toString base + "/") (toString path);
 in
-  {
-  xdg.configFile = configAttrs;
+{
+  xdg.configFile = luaConfigAttr // nixConfigAttr;
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-unwrapped;#.override { treesitter-parsers = {}; };
+    package = pkgs.neovim-unwrapped; # .override { treesitter-parsers = {}; };
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
