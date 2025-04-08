@@ -15,7 +15,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 # nix-installer.shの中身がおかしくないか軽く確認しとくと良い
 cat nix-installer.sh | sh -s -- install
 ```
-> [!WARN]
+> [!WARNING]
 > 最初にdeterminate systemが手を加えたNixをインストールするか聞かれる。
 > これをNoと入力することで公式のNixがインストールされる。こちらをおすすめする。
 
