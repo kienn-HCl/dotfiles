@@ -41,7 +41,8 @@ let
 
   nixConfigPaths = builtins.filter (f: strings.hasSuffix ".nix" (toString f)) configPaths;
   nixConfigAttrs = map (path: {
-    "${strings.removeSuffix ".nix" (removePrefixPath ./. path) + ".lua"}".text = (import path {inherit pkgs;}).text;
+    "${strings.removeSuffix ".nix" (removePrefixPath ./. path) + ".lua"}".text =
+      (import path { inherit pkgs; }).text;
   }) nixConfigPaths;
   nixConfigAttr = attrsets.mergeAttrsList nixConfigAttrs;
   removePrefixPath = base: path: strings.removePrefix (toString base + "/") (toString path);
