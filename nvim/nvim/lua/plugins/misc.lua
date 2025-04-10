@@ -77,11 +77,6 @@ return {
     "RRethy/vim-illuminate",
   },
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
-  },
-  {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require 'colorizer'.setup({
