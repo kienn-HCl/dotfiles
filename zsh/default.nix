@@ -67,5 +67,6 @@
         . $p
       done
     '';
+    defaultKeymap = "emacs";
   };
 }
