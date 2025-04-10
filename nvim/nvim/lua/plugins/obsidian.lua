@@ -16,19 +16,22 @@ return {
       -- Required.
       "nvim-lua/plenary.nvim",
     },
-    opts = {
-      workspaces = {
-        {
-          name = "obsidian",
-          path = "~/Documents/obsidian",
+    config = function ()
+      vim.opt.conceallevel = 1
+      require("obsidian").setup {
+        workspaces = {
+          {
+            name = "obsidian",
+            path = "~/Documents/obsidian",
+          },
         },
-      },
-      daily_notes = {
-        folder = "dailynote",
-      },
-      completion = {
-        nvim_cmp = true,
-      },
-    },
+        daily_notes = {
+          folder = "dailynote",
+        },
+        completion = {
+          nvim_cmp = true,
+        },
+      }
+    end,
   },
 }
