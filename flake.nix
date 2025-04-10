@@ -19,6 +19,9 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
+    };
   };
 
   outputs =
@@ -30,20 +33,15 @@
       home-manager,
       rust-overlay,
       nixgl,
+      firefox-nightly,
       ...
     }@inputs:
     let
-      moz-rev = "master";
-      moz-url = builtins.fetchTarball {
-        url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";
-      };
-      firefoxNightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
       pkgs = import nixpkgs {
         overlays = [
           rust-overlay.overlays.default
           nur.overlays.default
           nixgl.overlays.default
-          firefoxNightlyOverlay
         ];
       };
     in
