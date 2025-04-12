@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   lsp = with pkgs; [
     # shell
@@ -32,10 +32,10 @@ let
   buildInputs = with pkgs; [ deno ];
 
   inherit (pkgs.lib) strings filesystem attrsets;
-  configPaths = filesystem.listFilesRecursive ./nvim;
-  luaConfigPaths = builtins.filter (f: strings.hasSuffix ".lua" (toString f)) configPaths;
+  configPaths = map toString (filesystem.listFilesRecursive ./nvim);
+  luaConfigPaths = builtins.filter (f: strings.hasSuffix ".lua" f) configPaths;
   luaConfigAttrs = map (path: {
-    "${removePrefixPath ./. path}".source = path;
+    "${strings.removePrefix (toString ./. + "/") path}".source =  path;
   }) luaConfigPaths;
   luaConfigAttr = attrsets.mergeAttrsList luaConfigAttrs;
 
@@ -45,8 +45,7 @@ let
       (import path { inherit pkgs; }).text;
   }) nixConfigPaths;
   nixConfigAttr = attrsets.mergeAttrsList nixConfigAttrs;
-  removePrefixPath = base: path: strings.removePrefix (toString base + "/") (toString path);
-in
+  removePrefixPath = base: path: strings.removePrefix (toString base + "/") (toString path); in
 {
   xdg.configFile = luaConfigAttr // nixConfigAttr;
   programs.neovim = {
