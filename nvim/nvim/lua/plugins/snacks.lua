@@ -38,6 +38,13 @@ return {
         end,
         desc = "Diagnostics in buffers",
       },
+      {
+        "<leader>:",
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = "Command history",
+      },
     },
   },
 }
