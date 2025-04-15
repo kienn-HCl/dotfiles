@@ -35,7 +35,7 @@
             "gopls",
             "biome",
             "nil_ls",
-            "openscad-lsp",
+            "openscad_lsp",
             "ruff",
             "rust_analyzer",
             "tinymist",
