@@ -131,7 +131,7 @@ return {
     version = "*",
     opts = {
       shade_terminals = true,
-      open_mapping = [[<leader>tt]],
+      open_mapping = [[<leader>t]],
       direction = 'float',
       float_opts = {
         border = 'curved',

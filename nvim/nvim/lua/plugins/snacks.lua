@@ -17,9 +17,27 @@ return {
       words = { enabled = true },
     },
     keys = {
-      { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
-      { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-      { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      {
+        "<leader>/",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Grep",
+      },
+      {
+        "<leader>b",
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
+        "<leader>sd",
+        function()
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = "Diagnostics in buffers",
+      },
     },
   },
 }
