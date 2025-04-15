@@ -19,31 +19,31 @@ return {
           shiftwidth = 2,
         },
         tab = {
-          shiftwidth = 4,
+          shiftwidth = 2,
         },
       },
     })
 
     -- per filetype settings.
-    dansa.setup.filetype("nix", {
-      space = {
-        shiftwidth = 2,
-      },
-      default = {
-        tab = {
-          shiftwidth = 2,
-        },
-      },
-    })
-    dansa.setup.filetype("lua", {
-      space = {
-        shiftwidth = 2,
-      },
-      default = {
-        tab = {
-          shiftwidth = 2,
-        },
-      },
-    })
+    -- dansa.setup.filetype("nix", {
+    --   space = {
+    --     shiftwidth = 2,
+    --   },
+    --   default = {
+    --     tab = {
+    --       shiftwidth = 2,
+    --     },
+    --   },
+    -- })
+    -- dansa.setup.filetype("lua", {
+    --   space = {
+    --     shiftwidth = 2,
+    --   },
+    --   default = {
+    --     tab = {
+    --       shiftwidth = 2,
+    --     },
+    --   },
+    -- })
   end,
 }
