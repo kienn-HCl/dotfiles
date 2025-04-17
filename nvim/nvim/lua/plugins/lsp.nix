@@ -9,7 +9,7 @@
         config = function()
           vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(_)
-              vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+              vim.keymap.set('n', '<leader>fb', vim.lsp.buf.format)
               vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition)
               vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration)
               vim.keymap.set('n', 'K', vim.lsp.buf.hover)
@@ -20,8 +20,8 @@
               vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action)
               vim.keymap.set("n", "<space>le", vim.diagnostic.open_float)
               vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
-              vim.keymap.set('n', '<leader>]', vim.diagnostic.goto_next)
-              vim.keymap.set('n', '<leader>[', vim.diagnostic.goto_prev)
+              vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+              vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
             end
           })
 
