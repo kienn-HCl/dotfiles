@@ -16,6 +16,7 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 1
 
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
@@ -26,11 +27,12 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 1
     }
 
     // You can change the default width of the new windows.
     // If you leave the brackets empty, the windows themselves will decide their initial width.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.48; }
 
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
