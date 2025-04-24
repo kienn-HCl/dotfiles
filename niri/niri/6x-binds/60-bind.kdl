@@ -7,7 +7,7 @@ binds {
 
     Mod+Return { spawn "foot"; }
     Mod+D { spawn "rofi" "--terminal" "foot" "-show" "drun"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Mod+P { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
