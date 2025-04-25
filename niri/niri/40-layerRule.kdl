@@ -21,3 +21,8 @@ layer-rule {
 
     // geometry-corner-radius 12
 }
+// Block out mako notifications from screencasts.
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}

@@ -11,6 +11,7 @@ binds {
 
     Mod+W { toggle-column-tabbed-display; }
     Mod+O { toggle-window-rule-opacity; }
+    Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
