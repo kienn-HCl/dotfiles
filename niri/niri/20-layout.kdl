@@ -32,7 +32,7 @@ layout {
 
     // You can change the default width of the new windows.
     // If you leave the brackets empty, the windows themselves will decide their initial width.
-    default-column-width { proportion 0.48; }
+    default-column-width { proportion 0.50; }
 
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
@@ -83,8 +83,8 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
+        left 8
+        right 8
         // top 64
         // bottom 64
     }
