@@ -1,8 +1,8 @@
 #!/bin/bash -u
 
-foot nvim /tmp/ime || exit 1
+foot -T "vim ime" nvim /tmp/ime || exit 1
 if [[ -e /tmp/ime ]]; then
-    cat /tmp/ime | wl-copy
+    wl-copy -n < /tmp/ime
     notify-send -t 1000 copied
     rm -f /tmp/ime
 fi

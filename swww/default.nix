@@ -3,7 +3,7 @@
   home.packages = [
     pkgs.swww
   ];
-  xdg.dataFile."bin/swww_randomize_multi.sh" = {
+  home.file.".local/bin/swww_randomize_multi.sh" = {
     executable = true;
     source = ./swww_randomize_multi.sh;
   };
