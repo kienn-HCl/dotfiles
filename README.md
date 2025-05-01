@@ -47,9 +47,11 @@ home-manager switch --impure
 [Home Manager Manual](https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-standalone)
 
 ## Trouble
-- "program '/nix/var/determinate/post-build-hook.sh' failed with exit code 1" とうエラーが出てHome Managerがインストールできない
-2025-02-17時点での`nix-installer.sh`(おそらくv0.36.4)におそらく問題がある。
-`/nix/nix-installer uninstall`でアンインストール後、以前成功したv0.34.0の`nix-installer.sh`(ref. [releases v0.34.0](https://github.com/DeterminateSystems/nix-installer/releases/tag/v0.34.0))を試したところエラーは出なくなった。
+### "program '/nix/var/determinate/post-build-hook.sh' failed with exit code 1" とうエラーが出てHome Managerがインストールできない
+~~2025-02-17時点での`nix-installer.sh`(おそらくv0.36.4)におそらく問題がある。~~
+~~`/nix/nix-installer uninstall`でアンインストール後、以前成功したv0.34.0の`nix-installer.sh`(ref. [releases v0.34.0](https://github.com/DeterminateSystems/nix-installer/releases/tag/v0.34.0))を試したところエラーは出なくなった。~~
+おそらく公式のnixではなくDeterminate Nixがインストールされてるのが原因。
+v0.36.0から最初に`Install Determinate Nix?`と聞かれるようになっているのでこれにNoと答えるか一つ前の`v0.35.0`の`nix-installer.sh`を使う。
 
 
 ## macbookに関するメモ書き
