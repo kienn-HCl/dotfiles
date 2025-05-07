@@ -82,6 +82,7 @@ rec {
     zathura
     nwg-displays
     obsidian
+    feishin
     (config.lib.nixGL.wrap pkgs.nextcloud-client)
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
     (config.lib.nixGL.wrap pkgs.openscad-unstable)
