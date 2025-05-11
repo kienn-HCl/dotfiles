@@ -79,7 +79,6 @@ rec {
     slack
     zulip
     spotify
-    zathura
     nwg-displays
     obsidian
     feishin
@@ -124,6 +123,7 @@ rec {
     ./swww
     ./emacs
     ./nvim
+    ./zathura
   ];
 
   home.file = {
