@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-nightly = {
-      url = "github:nix-community/flake-firefox-nightly";
+      url = "github:kienn-HCl/flake-firefox-nightly-ja";
     };
   };
 
