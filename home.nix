@@ -24,6 +24,9 @@ rec {
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
+    permittedInsecurePackages = [
+      "electron-33.4.11"
+    ];
   };
 
   nixGL.packages = inputs.nixgl.packages;
