@@ -31,6 +31,12 @@ return {
         completion = {
           nvim_cmp = true,
         },
+        note_id_func = function (title)
+          if title == nil then
+            title = tostring(os.time())
+          end
+          return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        end
       }
     end,
   },
