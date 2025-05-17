@@ -39,7 +39,7 @@
         gst = "git status";
         gcm = "git commit -m \"%\"";
         gd = "git diff";
-        rcp = "rsync -ah --no-i-r --info=progress2";
+        rscp = "rsync -ah --no-i-r --info=progress2";
       };
     };
     syntaxHighlighting = {
