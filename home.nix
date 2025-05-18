@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  isNvidia = if builtins.pathExists /usr/bin/nvidia-smi then true else false;
+in
 rec {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,11 +33,9 @@ rec {
   };
 
   nixGL.packages = inputs.nixgl.packages;
-  #  nixGL.defaultWrapper = "nvidiaPrime";
-  nixGL.installScripts = [
-    #    "nvidia"
-    "mesa"
-  ];
+  nixGL.defaultWrapper = if isNvidia then "nvidia" else "mesa";
+  nixGL.installScripts = if isNvidia then [ "nvidia" ] else [ "mesa" ];
+
   home.packages = with pkgs; [
 
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -62,6 +63,8 @@ rec {
     jq
     dex
     bitwarden-cli
+    (config.lib.nixGL.wrap imv)
+    lsix
 
     pdfcpu
     gnuplot
@@ -85,11 +88,11 @@ rec {
     nwg-displays
     obsidian
     feishin
-    (config.lib.nixGL.wrap pkgs.nextcloud-client)
+    xfce.thunar
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
     (config.lib.nixGL.wrap pkgs.openscad-unstable)
     (config.lib.nixGL.wrap pkgs.freecad-wayland)
-    (config.lib.nixGL.wrap pkgs.steam)
+    # (config.lib.nixGL.wrap pkgs.steam)
 
     xwayland-satellite
 
