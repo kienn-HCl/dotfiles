@@ -130,6 +130,7 @@ rec {
     ./emacs
     ./nvim
     ./zathura
+    ./nextcloud
   ];
 
   home.file = {
