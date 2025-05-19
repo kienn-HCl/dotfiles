@@ -8,14 +8,29 @@ return {
     --         vim.cmd([[colorscheme tokyonight]])
     --         end,
     --     },
+    -- {
+    --     "ellisonleao/gruvbox.nvim",
+    --     lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    --     priority = 1000, -- make sure to load this before all the other start plugins
+    --     config = function()
+    --         -- load the colorscheme here
+    --         vim.o.background = 'dark'
+    --         vim.cmd([[colorscheme gruvbox]])
+    --     end,
+    -- },
     {
-        "ellisonleao/gruvbox.nvim",
+        "rebelot/kanagawa.nvim",
         lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
-            vim.o.background = 'dark'
-            vim.cmd([[colorscheme gruvbox]])
+            require('kanagawa').setup({
+                background = {
+                    dark = "dragon",
+                    light = "lotus"
+                },
+            })
+            vim.cmd([[colorscheme kanagawa]])
         end,
     },
     {
