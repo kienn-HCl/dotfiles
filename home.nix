@@ -135,6 +135,7 @@ rec {
     ./nvim
     ./zathura
     ./nextcloud
+    ./gtk
   ];
 
   home.file = {
