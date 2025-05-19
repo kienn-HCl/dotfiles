@@ -24,6 +24,10 @@ rec {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" "pipe-operators"  ];
+  };
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
@@ -90,7 +94,7 @@ rec {
     feishin
     xfce.thunar
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
-    (config.lib.nixGL.wrap pkgs.openscad-unstable)
+    (config.lib.nixGL.wrap pkgs.openscad)
     (config.lib.nixGL.wrap pkgs.freecad-wayland)
     # (config.lib.nixGL.wrap pkgs.steam)
 
