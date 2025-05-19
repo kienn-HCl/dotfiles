@@ -136,6 +136,7 @@ rec {
     ./zathura
     ./nextcloud
     ./gtk
+    ./waybar
   ];
 
   home.file = {
