@@ -54,7 +54,14 @@ home-manager switch --impure
 v0.36.0から最初に`Install Determinate Nix?`と聞かれるようになっているのでこれにNoと答えるか一つ前の`v0.35.0`の`nix-installer.sh`を使う。
 
 
-## macbookに関するメモ書き
+## tips
+### gtkアプリのemacsキーバインド適用に関して
+設定ファイルの書き込みのみではなく次のコマンドも実行しないといけない
+```sh
+gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"
+```
+参考: [GTK#Emacs キーバインド](https://wiki.archlinux.jp/index.php/GTK#Emacs_.E3.82.AD.E3.83.BC.E3.83.90.E3.82.A4.E3.83.B3.E3.83.89)
+
 ### macの起動時の音
 該当するefiブート変数を書き換えることで設定を変えられる。
 
