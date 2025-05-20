@@ -92,7 +92,6 @@ rec {
     nwg-displays
     obsidian
     feishin
-    xfce.thunar
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
     (config.lib.nixGL.wrap pkgs.openscad)
     (config.lib.nixGL.wrap pkgs.freecad-wayland)
@@ -137,6 +136,7 @@ rec {
     ./nextcloud
     ./gtk
     ./waybar
+    ./Thunar
   ];
 
   home.file = {
