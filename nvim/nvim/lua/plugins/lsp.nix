@@ -39,6 +39,7 @@
             "nil_ls",
             "openscad_lsp",
             "ruff",
+            "pylsp",
             "rust_analyzer",
             "tinymist",
           }) do

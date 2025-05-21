@@ -24,6 +24,7 @@ let
     openscad-lsp
     # python
     ruff
+    python313Packages.python-lsp-server
     # rust
     rust-analyzer
     # typst
