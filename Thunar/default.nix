@@ -11,5 +11,6 @@
   xdg.configFile."Thunar" = {
     source = ./Thunar;
     recursive = true;
+    force = true;
   };
 }

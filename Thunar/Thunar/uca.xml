@@ -16,7 +16,7 @@
 	<icon>nvim</icon>
 	<name>Open file with neovim</name>
 	<submenu></submenu>
-	<!-- <unique-id>1747642747798278-1</unique-id> -->
+	<unique-id>1747716628944583-1</unique-id>
 	<command>foot --working-directory %d nvim %F</command>
 	<description>Open file with nvim </description>
 	<range></range>
