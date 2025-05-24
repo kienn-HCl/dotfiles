@@ -19,7 +19,6 @@ output "PNP(HKM) JAPANNEXT MNT Unknown" {
     mode "3840x2160@60.000"
     scale 1
     transform "normal"
-    position x=0 y=0
     focus-at-startup
 }
 
@@ -27,4 +26,5 @@ output "Eizo Nanao Corporation EV2316W 90510103" {
     mode "1920x1080@60.000"
     scale 1
     transform "270"
+    position x=0 y=0
 }
