@@ -92,6 +92,7 @@ rec {
     nwg-displays
     obsidian
     feishin
+    zoom-us
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
     (config.lib.nixGL.wrap pkgs.openscad)
     (config.lib.nixGL.wrap pkgs.freecad-wayland)
