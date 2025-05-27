@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>foot</icon>
+	<icon>utilities-x-terminal</icon>
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1747642747798278-1</unique-id>
