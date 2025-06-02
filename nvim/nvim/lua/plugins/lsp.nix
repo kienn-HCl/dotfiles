@@ -34,6 +34,7 @@
             "clangd",
             "docker_compose_language_service",
             "dockerls",
+            "fsautocomplete",
             "gopls",
             "biome",
             "nil_ls",

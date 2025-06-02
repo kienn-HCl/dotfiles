@@ -2,10 +2,13 @@
 {
   gtk = {
     enable = true;
-    gtk2.extraConfig = ''
-      gtk-key-theme-name = "Emacs"
-      gtk-decoration-layout=menu:close
-    '';
+    gtk2 = {
+      force = true;
+      extraConfig = ''
+        gtk-key-theme-name = "Emacs"
+        gtk-decoration-layout=menu:close
+      '';
+    };
     gtk3.extraConfig = {
       gtk-key-theme-name = "Emacs";
       gtk-decoration-layout = "menu:close";

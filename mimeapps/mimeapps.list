@@ -10,3 +10,4 @@ text/html=firefox-nightly.desktop
 application/xhtml+xml=firefox-nightly.desktop
 x-scheme-handler/http=firefox-nightly.desktop
 x-scheme-handler/https=firefox-nightly.desktop
+inode/directory=thunar.desktop
