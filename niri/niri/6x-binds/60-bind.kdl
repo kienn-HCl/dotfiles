@@ -19,6 +19,7 @@ binds {
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+V { spawn "select-paste.sh"; }
 
+    Mod+N { spawn "swaync-client" "-t" "-sw"; }
 
     Mod+Shift+Q { close-window; }
 

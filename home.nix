@@ -140,6 +140,7 @@ rec {
     ./gtk
     ./waybar
     ./Thunar
+    ./swaync
   ];
 
   home.file = {
