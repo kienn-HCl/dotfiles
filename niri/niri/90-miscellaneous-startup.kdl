@@ -4,7 +4,7 @@
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "waybar"
-spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store"
+spawn-at-startup "wl-paste" "-t" "text" "--watch" "cliphist" "store"
 // xwayland
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
