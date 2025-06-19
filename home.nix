@@ -69,6 +69,7 @@ rec {
     bitwarden-cli
     (config.lib.nixGL.wrap imv)
     lsix
+    claude-code
 
     pdfcpu
     gnuplot
@@ -80,7 +81,7 @@ rec {
     hackgen-nf-font
 
     go
-    deno
+    # deno
     (rust-bin.stable.latest.default.override {
       # target = ["wasm32-unknown-unknown" "wasm32-wasi"];
     })

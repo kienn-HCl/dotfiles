@@ -30,7 +30,9 @@ let
     # typst
     tinymist
   ];
-  buildInputs = with pkgs; [ deno ];
+  buildInputs = with pkgs; [
+    deno
+  ];
 
   inherit (pkgs.lib) strings filesystem attrsets;
   configPaths = map toString (filesystem.listFilesRecursive ./nvim);
