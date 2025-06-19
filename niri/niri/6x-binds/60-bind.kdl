@@ -13,7 +13,7 @@ binds {
     Mod+O { toggle-window-rule-opacity; }
     Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
 
-    Mod+I { spawn "bash" "-c" "$HOME/.local/bin/ime.sh"; }
+    Mod+I { spawn "ime.sh"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
