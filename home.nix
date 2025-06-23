@@ -70,7 +70,6 @@ rec {
     (config.lib.nixGL.wrap imv)
     lsix
     claude-code
-    wtype
 
     pdfcpu
     gnuplot
@@ -141,6 +140,7 @@ rec {
     ./waybar
     ./Thunar
     ./swaync
+    ./ydotool
   ];
 
   home.file = {
