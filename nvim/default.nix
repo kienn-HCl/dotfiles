@@ -51,6 +51,7 @@ let
   removePrefixPath = base: path: strings.removePrefix (toString base + "/") (toString path);
 in
 {
+  # nixConfigAttrをあとにすることで拡張子を除いて同名のファイルがあったときにnixが上書きされる
   xdg.configFile = luaConfigAttr // nixConfigAttr;
   programs.neovim = {
     enable = true;
