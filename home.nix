@@ -26,7 +26,11 @@ rec {
   # environment.
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" "pipe-operators"  ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+      "pipe-operators"
+    ];
   };
   nixpkgs.config = {
     allowUnfree = true;

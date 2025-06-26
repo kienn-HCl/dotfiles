@@ -3,11 +3,15 @@ let
   kdlFiles = pkgs.lib.filesystem.listFilesRecursive ./niri;
   filteredKdlFiles = builtins.filter (f: pkgs.lib.strings.hasSuffix ".kdl" (toString f)) kdlFiles;
 
-  hostname = /etc/hostname |> builtins.readFile |> builtins.replaceStrings ["\n"] [""];
+  hostname = /etc/hostname |> builtins.readFile |> builtins.replaceStrings [ "\n" ] [ "" ];
   hostDepDir = if builtins.pathExists ./niri-${hostname} then ./niri-${hostname} else ./niri-common;
   hostDepFiles = pkgs.lib.filesystem.listFilesRecursive hostDepDir;
-  filteredHostFiles = builtins.filter (f: pkgs.lib.strings.hasSuffix ".kdl" (toString f)) hostDepFiles;
-  congigFile = builtins.concatStringsSep "\n" (map builtins.readFile (filteredKdlFiles ++ filteredHostFiles));
+  filteredHostFiles = builtins.filter (
+    f: pkgs.lib.strings.hasSuffix ".kdl" (toString f)
+  ) hostDepFiles;
+  congigFile = builtins.concatStringsSep "\n" (
+    map builtins.readFile (filteredKdlFiles ++ filteredHostFiles)
+  );
 in
 {
   xdg.configFile = {

@@ -9,8 +9,8 @@ let
     yufuin = "20";
     default = "13";
   };
-  height = if heightSet ? "${hostname}"  then heightSet."${hostname}" else heightSet.default;
-  fontSize = if fontSizeSet ? "${hostname}" then fontSizeSet."${hostname}"  else fontSizeSet.default;
+  height = if heightSet ? "${hostname}" then heightSet."${hostname}" else heightSet.default;
+  fontSize = if fontSizeSet ? "${hostname}" then fontSizeSet."${hostname}" else fontSizeSet.default;
 in
 {
   xdg.configFile = {

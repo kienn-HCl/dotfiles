@@ -37,13 +37,16 @@ let
   inherit (pkgs.lib) strings filesystem attrsets;
   configPaths = map toString (filesystem.listFilesRecursive ./nvim);
   luaConfigPaths = builtins.filter (f: strings.hasSuffix ".lua" f) configPaths;
-  luaConfigAttrs = map (path:
-  let
-    nvimPath = strings.removePrefix (toString ./. + "/") path;
-  in
-  {
-    "${nvimPath}".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/nvim/${nvimPath}";
-  }) luaConfigPaths;
+  luaConfigAttrs = map (
+    path:
+    let
+      nvimPath = strings.removePrefix (toString ./. + "/") path;
+    in
+    {
+      "${nvimPath}".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/nvim/${nvimPath}";
+    }
+  ) luaConfigPaths;
   luaConfigAttr = attrsets.mergeAttrsList luaConfigAttrs;
 
   nixConfigPaths = builtins.filter (f: strings.hasSuffix ".nix" (toString f)) configPaths;
