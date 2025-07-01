@@ -6,7 +6,7 @@
     Service = {
       Type = "simple";
       Restart = "always";
-      ExecStart = "/usr/bin/ydotoold";
+      ExecStart = "${pkgs.ydotool}/bin/ydotoold";
       ExecReload = "/usr/bin/kill -HUP $MAINPID";
       KillMode = "process";
       TimeoutSec = 180;
