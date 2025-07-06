@@ -159,4 +159,7 @@ return {
 			},
 		},
 	},
+	{
+		"jbyuki/venn.nvim"
+	}
 }
