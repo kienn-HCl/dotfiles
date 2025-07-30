@@ -40,6 +40,7 @@
         gcm = "git commit -m \"%\"";
         gd = "git diff";
         rscp = "rsync -ah --no-i-r --info=progress2";
+        cdg = "cd $(git rev-parse --show-toplevel)";
       };
     };
     syntaxHighlighting = {
