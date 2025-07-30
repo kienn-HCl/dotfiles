@@ -32,6 +32,16 @@ return {
 					-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					-- ["<C-p>"] = cmp.mapping.select_prev_item(),
 					-- ["<C-n>"] = cmp.mapping.select_next_item(),
+					["<C-CR>"] = cmp.mapping({
+						i = function(fallback)
+							if cmp.visible() then
+								cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+							else
+								fallback()
+							end
+						end
+					}
+					),
 					["<CR>"] = cmp.mapping({
 						i = function(fallback)
 							if cmp.visible() and cmp.get_active_entry() then
