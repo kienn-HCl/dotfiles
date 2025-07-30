@@ -91,8 +91,8 @@ rec {
     })
 
     discord
-    slack
-    zulip
+    # slack
+    # zulip
     spotify
     nwg-displays
     obsidian
@@ -122,29 +122,29 @@ rec {
   ];
 
   imports = [
+    ./direnv
+    ./emacs
+    ./firefox
+    ./foot
     ./git
-    ./zsh
+    ./gtk
+    ./hyprland
+    ./lazygit
+    ./mimeapps
+    ./mpv
+    ./nextcloud
+    ./niri
+    ./nvim
     ./rofi
     ./starship
-    ./lazygit
-    ./hyprland
-    ./niri
-    ./foot
-    ./mpv
-    ./firefox
-    ./mimeapps
     ./sway
-    ./direnv
-    ./swww
-    ./emacs
-    ./nvim
-    ./zathura
-    ./nextcloud
-    ./gtk
-    ./waybar
-    ./Thunar
     ./swaync
+    ./swww
+    ./Thunar
+    ./waybar
     ./ydotool
+    ./zathura
+    ./zsh
   ];
 
   home.file = {
