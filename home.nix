@@ -74,6 +74,7 @@ rec {
     (config.lib.nixGL.wrap imv)
     lsix
     claude-code
+    comma
 
     pdfcpu
     gnuplot
