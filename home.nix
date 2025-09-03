@@ -95,7 +95,7 @@ rec {
     # slack
     # zulip
     spotify
-    nwg-displays
+    # nwg-displays
     obsidian
     feishin
     zoom-us
