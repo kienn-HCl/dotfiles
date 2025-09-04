@@ -38,7 +38,7 @@
         ga = "git add";
         gst = "git status";
         gcm = "git commit -m \"%\"";
-        gd = "git diff";
+        gd = "git difft";
         rscp = "rsync -ah --no-i-r --info=progress2";
         cdg = "cd $(git rev-parse --show-toplevel)";
       };

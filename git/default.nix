@@ -7,9 +7,12 @@
     extraConfig = {
       init.defaultBranch = "main";
     };
-    difftastic = {
-      enable = true;
-      background = "dark";
+    # difftastic = {
+    #   enable = true;
+    #   background = "dark";
+    # };
+    aliases = {
+      difft = "-c diff.external=difft diff";
     };
   };
 }
