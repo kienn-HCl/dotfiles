@@ -90,6 +90,7 @@ rec {
     (rust-bin.stable.latest.default.override {
       # target = ["wasm32-unknown-unknown" "wasm32-wasi"];
     })
+    uv
 
     discord
     # slack
