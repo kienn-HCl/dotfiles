@@ -1,0 +1,15 @@
+; performance?
+(setq gc-cons-threshold #x40000000)
+(setq read-process-output-max (* 1024 1024 4))
+
+(let ((mono-spaced-font "HackGen Console NF")
+      (proportionately-spaced-font "Sans"))
+  (set-face-attribute 'default nil :family mono-spaced-font :height 130)
+  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
+  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(global-display-line-numbers-mode t)
+(line-number-mode t)
+(column-number-mode t)

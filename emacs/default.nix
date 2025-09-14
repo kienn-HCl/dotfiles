@@ -1,11 +1,10 @@
-{ ... }:
+{ config, ... }:
 {
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [
-      epkgs.magit
-      epkgs.evil
-      epkgs.gruvbox-theme
-    ];
+  };
+  home.file = {
+    ".emacs.d/init.el".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/emacs/init.el";
+    ".emacs.d/early-init.el".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/emacs/early-init.el";
   };
 }
