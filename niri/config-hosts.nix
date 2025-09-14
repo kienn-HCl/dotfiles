@@ -1,7 +1,57 @@
+{ host, ... }:
+''
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+  keyboard {
+      xkb {
+          // For more information, see xkeyboard-config(7).
+          layout "${host.input.xkb.keyboard.layout}"
+          options "ctrl:nocaps,grp:shifts_toggle"
+      }
+  }
+
+  touchpad {
+      // off
+      tap
+      // dwt
+      // dwtp
+      // natural-scroll
+      // accel-speed 0.2
+      // accel-profile "flat"
+      // scroll-method "two-finger"
+      // disabled-on-external-mouse
+  }
+
+  mouse {
+      // off
+      // natural-scroll
+      // accel-speed 0.2
+      // accel-profile "flat"
+      // scroll-method "no-scroll"
+  }
+
+  trackpoint {
+      // off
+      // natural-scroll
+      // accel-speed 0.2
+      // accel-profile "flat"
+      // scroll-method "on-button-down"
+      // scroll-button 273
+      // middle-emulation
+  }
+
+  // Uncomment this to make the mouse warp to the center of newly focused windows.
+  warp-mouse-to-focus
+
+  // Focus windows and outputs automatically when moving the mouse into them.
+  // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+  focus-follows-mouse max-scroll-amount="0%"
+}
+
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 20
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -32,7 +82,7 @@ layout {
 
     // You can change the default width of the new windows.
     // If you leave the brackets empty, the windows themselves will decide their initial width.
-    default-column-width { proportion 0.50; }
+    default-column-width { proportion ${host.layout.default-column-width.proportion}; }
 
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
@@ -98,3 +148,5 @@ layout {
         place-within-column
     }
 }
+
+''

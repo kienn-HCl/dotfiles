@@ -1,22 +1,23 @@
 { pkgs, ... }:
 let
-  kdlFiles = pkgs.lib.filesystem.listFilesRecursive ./niri;
-  filteredKdlFiles = builtins.filter (f: pkgs.lib.strings.hasSuffix ".kdl" (toString f)) kdlFiles;
-
   hostname = /etc/hostname |> builtins.readFile |> builtins.replaceStrings [ "\n" ] [ "" ];
-  hostDepDir = if builtins.pathExists ./niri-${hostname} then ./niri-${hostname} else ./niri-common;
-  hostDepFiles = pkgs.lib.filesystem.listFilesRecursive hostDepDir;
-  filteredHostFiles = builtins.filter (
-    f: pkgs.lib.strings.hasSuffix ".kdl" (toString f)
-  ) hostDepFiles;
-  congigFile = builtins.concatStringsSep "\n" (
-    map builtins.readFile (filteredKdlFiles ++ filteredHostFiles)
-  );
+  hosts = {
+    yufuin = {
+      input.xkb.keyboard.layout = "us,jp";
+      layout.default-column-width.proportion = "0.33333";
+    };
+    default = {
+      input.xkb.keyboard.layout = "jp,us";
+      layout.default-column-width.proportion = "0.5";
+    };
+  };
+  host = if hosts ? "${hostname}" then hosts."${hostname}" else hosts.default;
+  config = (import ./config-hosts.nix {inherit host;}) + (builtins.readFile ./config-common.kdl);
 in
 {
   xdg.configFile = {
     "niri/config.kdl" = {
-      text = congigFile;
+      text = config;
       recursive = true;
     };
     "niri/script" = {
