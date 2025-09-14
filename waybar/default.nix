@@ -1,20 +1,21 @@
 { ... }:
 let
   hostname = /etc/hostname |> builtins.readFile |> builtins.replaceStrings [ "\n" ] [ "" ];
-  heightSet = {
-    yufuin = 40;
-    default = 30;
+  hosts = {
+    yufuin = {
+      height = 40;
+      fontSize = "20";
+    };
+    default = {
+      height = 30;
+      fontSize = "13";
+    };
   };
-  fontSizeSet = {
-    yufuin = "20";
-    default = "13";
-  };
-  height = if heightSet ? "${hostname}" then heightSet."${hostname}" else heightSet.default;
-  fontSize = if fontSizeSet ? "${hostname}" then fontSizeSet."${hostname}" else fontSizeSet.default;
+  config = if hosts ? "${hostname}" then hosts."${hostname}" else hosts.default;
 in
 {
   xdg.configFile = {
-    "waybar/config.jsonc".text = builtins.toJSON (import ./config.nix { inherit height; });
-    "waybar/style.css".text = import ./style.css.nix { inherit fontSize; };
+    "waybar/config.jsonc".text = builtins.toJSON (import ./config.nix { inherit (config) height; });
+    "waybar/style.css".text = import ./style.css.nix { inherit (config) fontSize; };
   };
 }
