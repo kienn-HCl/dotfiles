@@ -29,6 +29,8 @@ let
     rust-analyzer
     # typst
     tinymist
+    # latex
+    texlab
   ];
   buildInputs = with pkgs; [
     deno

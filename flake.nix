@@ -22,6 +22,10 @@
     firefox-nightly = {
       url = "github:kienn-HCl/flake-firefox-nightly-ja";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -34,6 +38,7 @@
       rust-overlay,
       nixgl,
       firefox-nightly,
+      emacs-overlay,
       ...
     }@inputs:
     let
@@ -42,6 +47,7 @@
           rust-overlay.overlays.default
           nur.overlays.default
           nixgl.overlays.default
+          emacs-overlay.overlay
         ];
       };
     in

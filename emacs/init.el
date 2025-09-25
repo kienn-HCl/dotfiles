@@ -1,4 +1,3 @@
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 ; GUIのボタンで追加された設定の保存場所を変更
 (setq custom-file (locate-user-emacs-file "cutom.el"))
 (load custom-file :no-error-if-file-is-missing)
@@ -24,9 +23,12 @@
 
 (global-auto-revert-mode 1)
 
+(setq scroll-conservatively 1)
 
 (require 'package)
 (package-initialize)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 ; use-packageの設定
@@ -123,7 +125,7 @@
   :ensure nil
   :commands (dired)
   :hook
-  ((dired-mode . dired-hide-details-mode)
+  (;(dired-mode . dired-hide-details-mode)
    (dired-mode . hl-line-mode))
   :config
   (setq dired-recursive-copies 'always)
@@ -236,7 +238,8 @@
   :ensure t
   :config
   (setq org-directory "~/org")
-  (setq org-default-notes-file "notes.org"))
+  (setq org-default-notes-file "notes.org")
+  (setq org-startup-truncade nil))
 (use-package org-capture
   :ensure nil
   :after org
@@ -258,3 +261,34 @@
   :bind
   (("C-c a" . org-agenda)))
 
+(use-package eglot
+  :ensure nil
+  :bind
+  (:map eglot-mode-map
+        ("C-c r" . 'eglot-rename)
+        ("C-c f" . 'eglot-format)
+        ("C-c a" . 'eglot-code-actions)
+        ("C-c o" . 'eglot-code-action-organize-imports)
+        ("C-c q" . 'eglot-code-action-quickfix)
+        ("C-c e" . 'eglot-code-action-extract)
+        ("C-c i" . 'eglot-code-action-inline)
+        ("C-c w" . 'eglot-code-action-rewrite)
+        ("C-c m" . 'eglot-inlay-hints-mode)
+        ("C-c h" . 'eldoc))
+  :hook
+  ((c-mode c++-mode latex-mode tex-mode) . eglot-ensure))
+(use-package company
+  :ensure t
+  :init
+  (global-company-mode)
+  :config
+  (setq company-idle-delay 0.3)
+  (setq company-minimum-prefix-length 1)
+  (setq company-transformers '(company-sort-by-occurrence))
+  :bind
+  (("M-<tab>" . company-complete)
+   :map company-active-map
+              ("C-n". company-select-next)
+              ("C-p". company-select-previous)
+              ("M-<". company-select-first)
+              ("M->". company-select-last)))

@@ -12,7 +12,7 @@ let
     };
   };
   host = if hosts ? "${hostname}" then hosts."${hostname}" else hosts.default;
-  config = (import ./config-hosts.nix {inherit host;}) + (builtins.readFile ./config-common.kdl);
+  config = (import ./config-hosts.nix { inherit host; }) + (builtins.readFile ./config-common.kdl);
 in
 {
   xdg.configFile = {

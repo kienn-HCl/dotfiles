@@ -73,8 +73,8 @@ rec {
     bitwarden-cli
     (config.lib.nixGL.wrap imv)
     lsix
-    claude-code
     comma
+    tectonic
 
     pdfcpu
     gnuplot

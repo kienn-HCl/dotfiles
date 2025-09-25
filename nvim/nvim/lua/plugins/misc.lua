@@ -160,6 +160,6 @@ return {
 		},
 	},
 	{
-		"jbyuki/venn.nvim"
-	}
+		"jbyuki/venn.nvim",
+	},
 }
