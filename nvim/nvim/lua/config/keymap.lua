@@ -10,3 +10,9 @@ vim.keymap.set("i", "jj", "<Esc>", { silent = true })
 
 -- search hilight off
 vim.keymap.set("n", "<Esc><Esc>", ":nohl<CR>", { silent = true })
+
+-- better H/L PageUp/PageDown
+vim.keymap.set("n", "H", "H<Plug>(H)")
+vim.keymap.set("n", "L", "L<Plug>(L)")
+vim.keymap.set("n", "<Plug>(H)H", "<PageUp>H<Plug>(H)")
+vim.keymap.set("n", "<Plug>(L)L", "<PageDown>Lzb<Plug>(L)")
