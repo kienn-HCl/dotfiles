@@ -136,7 +136,12 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"foot$"# title="vim ime"
+    match title="^My memo .*"
+    open-floating true
+}
+
+window-rule {
+    match title="^vim ime$"
     open-floating true
 }
 

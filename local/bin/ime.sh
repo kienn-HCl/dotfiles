@@ -2,16 +2,15 @@
 
 TMP_FILE="/tmp/ime.txt"
 EDITOR="${EDITOR:-vim}"
-if [ -z "${TERM+x}" ]; then
-  echo "Please define \$TERM. Cannot identify the terminal application." >&2
-  notify-send -t 1000 "Please define \$TERM. Cannot identify the terminal application."
-  exit 1
-fi
 
-if [ "$TERM" = "foot" ]; then
-  foot -T "vim ime" nvim $TMP_FILE || exit 1
+if command -v foot >/dev/null 2>&1; then
+  foot -T "vim ime" "$EDITOR" $TMP_FILE || exit 1
+elif command -v alacritty>/dev/null 2>&1; then
+  alacritty -T "vim ime" -e "$EDITOR" $TMP_FILE || exit 1
 else
-  $TERM "$EDITOR" $TMP_FILE || exit 1
+  echo "Please install foot or alacritty." >&2
+  notify-send -t 1000 "Please install foot or alacritty."
+  exit 1
 fi
 if [[ -e $TMP_FILE ]]; then
     wl-copy -n < "$TMP_FILE"
