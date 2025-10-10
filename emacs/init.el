@@ -52,7 +52,7 @@
 
 ; 見た目関連
 (use-package gruvbox-theme
-  :ensure t
+  :ensure nil
   :config
   (load-theme 'gruvbox-light-medium :no-confirm-loading))
 
@@ -66,37 +66,37 @@
   (setq whitespace-style '(face trailing tabs tab-mark)))
 
 (use-package rainbow-delimiters
-  :ensure t
+  :ensure nil
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
 ; font
 (use-package nerd-icons
-  :ensure t)
+  :ensure nil)
 (use-package nerd-icons-completion
-  :ensure t
+  :ensure nil
   :after marginalia
   :config
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 (use-package nerd-icons-corfu
-  :ensure t
+  :ensure nil
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 (use-package nerd-icons-dired
-  :ensure t
+  :ensure nil
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
 ; minibuffer etc
 (use-package vertico
-  :ensure t
+  :ensure nil
   :hook (after-init . vertico-mode))
 (use-package marginalia
-  :ensure t
+  :ensure nil
   :hook (after-init . marginalia-mode))
 (use-package orderless
-  :ensure t
+  :ensure nil
   :config
   (setq completion-styles '(orderless basic))
   (setq completion-category-defaults nil)
@@ -105,7 +105,7 @@
   :ensure nil
   :hook (after-init . savehist-mode))
 (use-package corfu
-  :ensure t
+  :ensure nil
   :hook (after-init . global-corfu-mode)
   :bind (:map corfu-map ("<tab>" . corfu-complete))
   :config
@@ -133,7 +133,7 @@
   (setq delete-by-moving-to-trash t)
   (setq dired-dwim-target t))
 (use-package dired-subtree
-  :ensure t
+  :ensure nil
   :after dired
   :bind
   ( :map dired-mode-map
@@ -144,7 +144,7 @@
   :config
   (setq dired-subtree-use-backgrounds nil))
 (use-package trashed
-  :ensure t
+  :ensure nil
   :commands (trashed)
   :config
   (setq trashed-action-confirm 'y-or-n-p)
@@ -157,7 +157,7 @@
   (after-init . which-key-mode))
 
 (use-package undo-tree
-  :ensure t
+  :ensure nil
   :hook
   (after-init . global-undo-tree-mode)
   :config
@@ -169,12 +169,12 @@
 	undo-tree-history-directory-alist '(("." . "~/.cache/emacs/undo"))))
 
 (use-package key-chord
-  :ensure t
+  :ensure nil
   :hook
   (after-init . key-chord-mode))
 
 (use-package evil
-  :ensure t
+  :ensure nil
   :hook
   (after-init . evil-mode)
   :config
@@ -211,17 +211,17 @@
                          (comment-or-uncomment-region (region-beginning) (region-end))))))
 
 (use-package evil-surround
-  :ensure t
+  :ensure nil
   :hook
   (evil-mode . global-evil-surround-mode))
 
 (use-package evil-matchit
-  :ensure t
+  :ensure nil
   :hook
   (evil-mode . global-evil-matchit-mode))
 
 (use-package magit
-  :ensure t
+  :ensure nil
   :bind
   (("C-x g" . mgit-status)
    ("C-x M-g" . magit-dispatch-pupup))
@@ -235,7 +235,7 @@
   (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map))
 
 (use-package org
-  :ensure t
+  :ensure nil
   :config
   (setq org-directory "~/org")
   (setq org-default-notes-file "notes.org")
@@ -278,7 +278,7 @@
   :hook
   ((c-mode c++-mode latex-mode tex-mode) . eglot-ensure))
 (use-package company
-  :ensure t
+  :ensure nil
   :init
   (global-company-mode)
   :config
