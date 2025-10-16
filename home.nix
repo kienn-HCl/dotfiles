@@ -75,6 +75,7 @@ rec {
     lsix
     comma
     tectonic
+    entr
 
     pdfcpu
     gnuplot
@@ -104,6 +105,7 @@ rec {
     (config.lib.nixGL.wrap pkgs.openscad)
     (config.lib.nixGL.wrap pkgs.freecad-wayland)
     # (config.lib.nixGL.wrap pkgs.steam)
+    libreoffice
 
     xwayland-satellite
 
