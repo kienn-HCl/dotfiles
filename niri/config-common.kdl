@@ -137,10 +137,7 @@ window-rule {
 
 window-rule {
     match title="^My memo .*"
-    open-floating true
-}
-
-window-rule {
+    match title="^My todo .*"
     match title="^vim ime$"
     open-floating true
 }
@@ -182,6 +179,7 @@ binds {
 
     Mod+I { spawn "ime.sh"; }
     Mod+M { spawn "memo.sh"; }
+    Mod+T { spawn "todo.sh"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
