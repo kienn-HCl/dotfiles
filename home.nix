@@ -36,7 +36,7 @@ rec {
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
     permittedInsecurePackages = [
-      "electron-33.4.11"
+      "electron-36.9.5"
     ];
   };
 
