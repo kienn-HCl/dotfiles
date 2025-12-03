@@ -40,9 +40,11 @@ rec {
     ];
   };
 
-  nixGL.packages = inputs.nixgl.packages;
-  nixGL.defaultWrapper = if isNvidia then "nvidia" else "mesa";
-  nixGL.installScripts = if isNvidia then [ "nvidia" ] else [ "mesa" ];
+  targets.genericLinux.nixGL = {
+    packages = inputs.nixgl.packages;
+    defaultWrapper = if isNvidia then "nvidia" else "mesa";
+    installScripts = if isNvidia then [ "nvidia" ] else [ "mesa" ];
+  };
 
   home.packages = with pkgs; [
 

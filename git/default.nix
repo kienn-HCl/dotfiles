@@ -2,17 +2,19 @@
 {
   programs.git = {
     enable = true;
-    userName = "kienn-HCl";
-    userEmail = "87010782+kienn-HCl@users.noreply.github.com";
-    extraConfig = {
+    settings = {
+      alias = {
+        difft = "-c diff.external=difft diff";
+      };
+      user = {
+        name = "kienn-HCl";
+        email = "87010782+kienn-HCl@users.noreply.github.com";
+      };
       init.defaultBranch = "main";
     };
     # difftastic = {
     #   enable = true;
     #   background = "dark";
     # };
-    aliases = {
-      difft = "-c diff.external=difft diff";
-    };
   };
 }
