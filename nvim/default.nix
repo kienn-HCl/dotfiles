@@ -8,7 +8,7 @@ let
     # c
     llvmPackages_19.clang-tools
     # docker
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     docker-compose-language-service
     hadolint
     # go

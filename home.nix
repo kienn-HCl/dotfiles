@@ -7,7 +7,7 @@
 let
   isNvidia = if builtins.pathExists /usr/bin/nvidia-smi then true else false;
 in
-rec {
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "frort";
@@ -47,13 +47,6 @@ rec {
   };
 
   home.packages = with pkgs; [
-
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-    # nixgl.auto.nixGLDefault
-    # nixgl.auto.nixGLNvidia
-
     git
     bat
     lsd
@@ -61,9 +54,9 @@ rec {
     fzf
     fd
     vim
-    # neovim
     htop
     gotop
+    btop
     ffmpeg
     difftastic
     silicon
@@ -76,28 +69,18 @@ rec {
     (config.lib.nixGL.wrap imv)
     lsix
     comma
-    tectonic
     entr
 
     pdfcpu
-    gnuplot
-    # platformio
 
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     hackgen-nf-font
 
-    go
-    # deno
-    (rust-bin.stable.latest.default.override {
-      # target = ["wasm32-unknown-unknown" "wasm32-wasi"];
-    })
     uv
 
     discord
-    # slack
-    # zulip
     spotify
     # nwg-displays
     obsidian
@@ -113,23 +96,11 @@ rec {
 
     wineWowPackages.waylandFull
     winetricks
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
   imports = [
     ./direnv
-    ./emacs
+    # ./emacs
     ./firefox
     ./foot
     ./git

@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
-    initExtraFirst = ''
+    initContent = let
+    configEarlyInit = lib.mkBefore ''
       DIRSTACKSIZE=100
       setopt auto_pushd
       setopt pushd_ignore_dups
@@ -12,6 +13,16 @@
       setopt magic_equal_subst
       setopt hist_verify
     '';
+    config = ''
+      if [[ -f "$HOME/.zsh/plugins/zsh-abbr//share/zsh/zsh-abbr/zsh-abbr.zsh" ]]; then
+        source "$HOME/.zsh/plugins/zsh-abbr//share/zsh/zsh-abbr/zsh-abbr.zsh"
+      fi
+      for p in ${pkgs.fzf}/share/fzf/*.zsh; do
+        . $p
+      done
+    '';
+    in
+    lib.mkMerge [ configEarlyInit config ];
     autocd = true;
     autosuggestion.enable = true;
     completionInit = "autoload -Uz compinit && compinit";
@@ -61,14 +72,6 @@
         bracket-level-4 = "fg=magenta,bold";
       };
     };
-    initExtra = ''
-      if [[ -f "$HOME/.zsh/plugins/zsh-abbr//share/zsh/zsh-abbr/zsh-abbr.zsh" ]]; then
-        source "$HOME/.zsh/plugins/zsh-abbr//share/zsh/zsh-abbr/zsh-abbr.zsh"
-      fi
-      for p in ${pkgs.fzf}/share/fzf/*.zsh; do
-        . $p
-      done
-    '';
     defaultKeymap = "emacs";
   };
 }
