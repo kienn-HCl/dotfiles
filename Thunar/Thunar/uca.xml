@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>utilities-x-terminal</icon>
+	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1747642747798278-1</unique-id>
@@ -13,10 +13,10 @@
 	<directories/>
 </action>
 <action>
-	<icon>nvim</icon>
-	<name>Open file with neovim</name>
+	<icon>neovim</icon>
+	<name>Open nvim</name>
 	<submenu></submenu>
-	<unique-id>1747716628944583-1</unique-id>
+	<unique-id>1767014002080255-1</unique-id>
 	<command>foot --working-directory %d nvim %F</command>
 	<description>Open file with nvim </description>
 	<range></range>

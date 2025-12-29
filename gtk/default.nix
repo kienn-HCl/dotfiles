@@ -18,12 +18,12 @@
       gtk-decoration-layout = "menu:close";
     };
     iconTheme = {
-      name = "Kanagawa";
-      package = pkgs.kanagawa-icon-theme;
+      name = "Colloid-Dark";
+      package = pkgs.colloid-icon-theme;
     };
     theme = {
-      name = "Kanagawa-B";
-      package = pkgs.kanagawa-gtk-theme;
+      name = "Jasper-Dark";
+      package = pkgs.jasper-gtk-theme;
     };
   };
 }
