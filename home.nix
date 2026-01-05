@@ -59,7 +59,7 @@ in
     btop
     ffmpeg
     difftastic
-    silicon
+    # silicon
     cliphist
     screen
     yq
@@ -88,7 +88,7 @@ in
     zoom-us
     # (config.lib.nixGL.wrap pkgs.bambu-studio)
     (config.lib.nixGL.wrap pkgs.openscad)
-    (config.lib.nixGL.wrap pkgs.freecad-wayland)
+    # (config.lib.nixGL.wrap pkgs.freecad-wayland)
     # (config.lib.nixGL.wrap pkgs.steam)
     libreoffice
 
@@ -96,6 +96,11 @@ in
 
     wineWowPackages.waylandFull
     winetricks
+
+    (config.lib.nixGL.wrap pkgs.noctalia-shell)
+    quickshell
+    (config.lib.nixGL.wrap gpu-screen-recorder)
+    cava
   ];
 
   imports = [
@@ -115,7 +120,7 @@ in
     ./rofi
     ./starship
     ./sway
-    ./swaync
+    # ./swaync
     ./swww
     ./Thunar
     ./waybar

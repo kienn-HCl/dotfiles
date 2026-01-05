@@ -170,7 +170,9 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return { spawn "foot"; }
-    Mod+D { spawn "rofi" "--terminal" "foot" "-show" "drun"; }
+    // Mod+D { spawn "rofi" "--terminal" "foot" "-show" "drun"; }
+    Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+
     Mod+P { spawn "swaylock"; }
 
     Mod+W { toggle-column-tabbed-display; }
@@ -185,7 +187,7 @@ binds {
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+V { spawn "select-paste.sh"; }
 
-    Mod+N { spawn "swaync-client" "-t" "-sw"; }
+    // Mod+N { spawn "swaync-client" "-t" "-sw"; }
 
     Mod+Shift+Q { close-window; }
 
@@ -403,7 +405,7 @@ binds {
 
 environment {
     // xwayland
-    DISPLAY ":0"
+    // DISPLAY ":0"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -411,14 +413,15 @@ environment {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+spawn-at-startup "noctalia-shell"
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "cliphist" "store"
-spawn-at-startup "swaync"
-spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store"
+// spawn-at-startup "swaync"
+// spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store"
 // xwayland
 // spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/script/niri_swww_randomize_multi.sh"
+// spawn-at-startup "swww-daemon"
+// spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/script/niri_swww_randomize_multi.sh"
 spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/script/niri_swayidle.sh"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
