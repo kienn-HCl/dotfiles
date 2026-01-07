@@ -70,6 +70,7 @@ in
     lsix
     comma
     entr
+    claude-code
 
     pdfcpu
 
