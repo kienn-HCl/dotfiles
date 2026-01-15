@@ -188,6 +188,7 @@ binds {
     Mod+V { spawn "select-paste.sh"; }
 
     // Mod+N { spawn "swaync-client" "-t" "-sw"; }
+    Mod+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
 
     Mod+Shift+Q { close-window; }
 

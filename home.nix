@@ -105,6 +105,7 @@ in
   ];
 
   imports = [
+    inputs.nix-hazkey.homeModules.hazkey
     ./direnv
     # ./emacs
     ./firefox
@@ -128,6 +129,18 @@ in
     ./ydotool
     ./zathura
     ./zsh
+  ];
+
+  services.hazkey.enable = true;
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+  };
+
+  # fcitx5 systemd serviceに必要な環境変数を追加
+  # Nixのパスを配置してOSのfcitx5とのミスマッチを防ぐ
+  systemd.user.services.fcitx5-daemon.Service.Environment = [
+    "XDG_DATA_DIRS=${config.home.homeDirectory}/.nix-profile/share:/nix/var/nix/profiles/default/share"
   ];
 
   home.file = {

@@ -26,6 +26,10 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-hazkey = {
+      url = "github:aster-void/nix-hazkey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,6 +43,7 @@
       nixgl,
       firefox-nightly,
       emacs-overlay,
+      nix-hazkey,
       ...
     }@inputs:
     let
