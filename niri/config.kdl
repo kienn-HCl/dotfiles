@@ -1,3 +1,99 @@
+// Host-specific settings (xkb layout, default-column-width)
+include "config-hosts.kdl"
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+    keyboard {
+        xkb {
+            // layout is set in config-hosts.kdl
+            options "ctrl:nocaps,grp:shifts_toggle"
+        }
+    }
+
+    touchpad {
+        // off
+        tap
+        // dwt
+        // dwtp
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // middle-emulation
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+layout {
+    gaps 20
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    // default-column-width is set in config-hosts.kdl
+
+    focus-ring {
+        width 4
+        active-color "#98971a"
+        inactive-color "#a89984"
+    }
+
+    border {
+        off
+        width 4
+        active-color "#ffc87f"
+        inactive-color "#505050"
+    }
+
+    struts {
+        left 8
+        right 8
+    }
+
+    tab-indicator {
+        width 15
+        gap 8
+        length total-proportion=0.5
+        gaps-between-tabs 8
+        corner-radius 10
+        position "left"
+        place-within-column
+    }
+}
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs

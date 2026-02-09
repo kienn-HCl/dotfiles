@@ -11,15 +11,13 @@ let
     input.xkb.keyboard.layout = hostConfig.xkbLayout;
     layout.default-column-width.proportion = hostConfig.defaultColumnWidth;
   };
-  niriConfig =
-    (import ./config-hosts.nix { inherit host; }) + (builtins.readFile ./config-common.kdl);
+  configHosts = import ./config-hosts.nix { inherit host; };
 in
 {
   xdg.configFile = {
-    "niri/config.kdl" = {
-      text = niriConfig;
-      recursive = true;
-    };
+    "niri/config.kdl".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/niri/config.kdl";
+    "niri/config-hosts.kdl".text = configHosts;
     "niri/script" = {
       source = ./niri/script;
       recursive = true;
