@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   services.nextcloud-client = {
     enable = true;

@@ -1,4 +1,12 @@
-{ ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  userConfig = import ../lib/user.nix;
+in
 {
   programs.git = {
     enable = true;
@@ -7,14 +15,10 @@
         difft = "-c diff.external=difft diff";
       };
       user = {
-        name = "kienn-HCl";
-        email = "87010782+kienn-HCl@users.noreply.github.com";
+        name = userConfig.git.name;
+        email = userConfig.git.email;
       };
       init.defaultBranch = "main";
     };
-    # difftastic = {
-    #   enable = true;
-    #   background = "dark";
-    # };
   };
 }

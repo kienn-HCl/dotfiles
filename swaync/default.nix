@@ -1,4 +1,9 @@
-{ ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   services.swaync = {
     enable = true;

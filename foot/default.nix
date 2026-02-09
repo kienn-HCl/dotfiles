@@ -1,7 +1,13 @@
-{ ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   color = import ../lib/color/kanagawa-dragon.nix;
-  trimSharp = color: builtins.replaceStrings [ "#" ] [ "" ] color;
+  helpers = import ../lib/helpers.nix;
+  inherit (helpers) trimSharp;
 in
 {
   programs.foot = {

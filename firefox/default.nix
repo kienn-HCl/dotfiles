@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   inputs,
   ...
 }:
@@ -8,7 +9,8 @@
   programs.firefox = {
     enable = true;
     package = (
-      config.lib.nixGL.wrap inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
+      config.lib.nixGL.wrap
+        inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin
     );
     languagePacks = [
       "jp"

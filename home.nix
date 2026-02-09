@@ -5,13 +5,14 @@
   ...
 }:
 let
+  userConfig = import ./lib/user.nix;
   isNvidia = if builtins.pathExists /usr/bin/nvidia-smi then true else false;
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "frort";
-  home.homeDirectory = "/home/frort";
+  home.username = userConfig.username;
+  home.homeDirectory = userConfig.homeDirectory;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -107,7 +108,6 @@ in
   imports = [
     inputs.nix-hazkey.homeModules.hazkey
     ./direnv
-    # ./emacs
     ./firefox
     ./foot
     ./git
@@ -122,7 +122,6 @@ in
     ./rofi
     ./starship
     ./sway
-    # ./swaync
     ./swww
     ./Thunar
     ./waybar

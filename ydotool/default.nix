@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   home.packages = [ pkgs.ydotool ];
   systemd.user.services.ydotool = {

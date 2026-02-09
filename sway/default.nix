@@ -1,4 +1,9 @@
-{ ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   xdg.configFile = {
     "sway" = {
