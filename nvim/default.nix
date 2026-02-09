@@ -30,6 +30,7 @@ let
     # python
     ruff
     python313Packages.python-lsp-server
+    python313Packages.debugpy
     # rust
     rust-analyzer
     # typst
