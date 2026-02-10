@@ -74,4 +74,11 @@ in
     defaultEditor = true;
     extraPackages = lsp ++ buildInputs;
   };
+  xdg.dataFile."nvim/site" = {
+    recursive = true;
+    source = pkgs.symlinkJoin {
+      name = "ts-parsers";
+      paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+    };
+  };
 }
