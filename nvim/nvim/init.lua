@@ -30,7 +30,7 @@ vim.o.smartcase = true
 vim.o.hlsearch = true
 
 -- manipulation
-vim.g.mapleader = " "
+vim.g.mapleader = ";"
 vim.opt.clipboard:append({ "unnamedplus" })
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 50

@@ -1,6 +1,11 @@
 // Host-specific settings (xkb layout, default-column-width)
 include "config-hosts.kdl"
 
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+overview {
+    backdrop-color "#1d2021"
+}
+
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
@@ -8,6 +13,8 @@ input {
             // layout is set in config-hosts.kdl
             options "ctrl:nocaps,grp:shifts_toggle"
         }
+        repeat-delay 300
+        repeat-rate 50
     }
 
     touchpad {
@@ -69,6 +76,7 @@ layout {
         width 4
         active-color "#98971a"
         inactive-color "#a89984"
+        urgent-color "#cc241d"
     }
 
     border {
@@ -91,6 +99,7 @@ layout {
         corner-radius 10
         position "left"
         place-within-column
+        urgent-color "#cc241d"
     }
 }
 
@@ -256,6 +265,17 @@ window-rule {
     clip-to-geometry true
 }
 
+// Enable shadow for all windows.
+window-rule {
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#00000050"
+    }
+}
+
 // Dialogs and settings windows
 window-rule {
     match title=r#".*[Pp]references.*"#
@@ -349,9 +369,11 @@ binds {
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+Shift+F { maximize-column; }
+    Mod+Shift+F { toggle-windowed-fullscreen; }
+    Mod+Ctrl+F { maximize-column; }
     Mod+F { fullscreen-window; }
     Mod+C { center-column; }
+    Mod+E { expand-column-to-available-width; }
 
     // Finer width adjustments.
     // This command can also:
@@ -369,8 +391,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+Space       { toggle-window-floating; }
-    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Space { toggle-window-floating; }
+    Mod+Space { switch-focus-between-floating-and-tiling; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
@@ -399,9 +421,7 @@ binds {
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-or-workspace-down; }
-    // Mod+J     { focus-window-down; }
     Mod+K     { focus-window-or-workspace-up; }
-    // Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
     Mod+Shift+Left  { consume-or-expel-window-left; }
@@ -412,12 +432,6 @@ binds {
     Mod+Shift+J     { move-window-down-or-to-workspace-down; }
     Mod+Shift+K     { move-window-up-or-to-workspace-up; }
     Mod+Shift+L     { consume-or-expel-window-right; }
-    // Mod+Shift+Left  { move-column-left; }
-    // Mod+Shift+Right { move-column-right; }
-    // Mod+Shift+H     { move-column-left; }
-    // Mod+Shift+J     { move-window-down; }
-    // Mod+Shift+K     { move-window-up; }
-    // Mod+Shift+L     { move-column-right; }
 
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
@@ -457,8 +471,6 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    // Mod+U              { focus-workspace-down; }
-    // Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -507,8 +519,8 @@ binds {
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
-    // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
+    // Overview
+    Mod+Tab { toggle-overview; }
 
     // The allow-when-locked=true property makes them work even when the session is locked.
     XF86AudioRaiseVolume    allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "1%+"; }
@@ -528,7 +540,8 @@ binds {
     XF86MonBrightnessDown   { spawn "bash" "-c" "brightnessctl -q set 5%- && VALUE=$(brightnessctl --percentage get) && notify-send -e -h string:x-canonical-private-synchronous:brightness -h \"int:value:${VALUE}\" -t 800 \"Brightness: ${VALUE}%\""; }
     XF86MonBrightnessUp     { spawn "bash" "-c" "brightnessctl -q set +5% && VALUE=$(brightnessctl --percentage get) && notify-send -e -h string:x-canonical-private-synchronous:brightness -h \"int:value:$VALUE\" -t 800 \"Brightness: ${VALUE}%\""; }
 
-    Print { screenshot; }
+    Print { screenshot show-pointer=false; }
+    Shift+Print { screenshot show-pointer=true; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 

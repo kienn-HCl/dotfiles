@@ -15,6 +15,10 @@ return {
 			scope = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
+			indent = { enabled = true },
+			input = { enabled = true },
+			toggle = { enabled = true },
+			quickfile = { enabled = true },
 		},
 		keys = {
 			{
@@ -44,6 +48,27 @@ return {
 					Snacks.picker.command_history()
 				end,
 				desc = "Command history",
+			},
+			{
+				"<leader>ud",
+				function()
+					Snacks.toggle.diagnostics():toggle()
+				end,
+				desc = "Toggle diagnostics",
+			},
+			{
+				"<leader>ul",
+				function()
+					Snacks.toggle.line_number():toggle()
+				end,
+				desc = "Toggle line numbers",
+			},
+			{
+				"<leader>uw",
+				function()
+					Snacks.toggle.option("wrap"):toggle()
+				end,
+				desc = "Toggle word wrap",
 			},
 		},
 	},
