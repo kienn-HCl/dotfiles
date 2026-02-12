@@ -5,6 +5,7 @@
       keyboard {
           xkb {
               layout "${host.input.xkb.keyboard.layout}"
+              options "ctrl:nocaps,grp:shifts_toggle"
           }
       }
   }

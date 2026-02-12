@@ -9,10 +9,7 @@ overview {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
-        xkb {
-            // layout is set in config-hosts.kdl
-            options "ctrl:nocaps,grp:shifts_toggle"
-        }
+        // xkb (layout, options) is set in config-hosts.kdl
         repeat-delay 300
         repeat-rate 50
     }
