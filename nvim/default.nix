@@ -74,11 +74,18 @@ in
     defaultEditor = true;
     extraPackages = lsp ++ buildInputs;
   };
-  xdg.dataFile."nvim/site" = {
+  # パーサのみをNixから提供（クエリはnvim-treesitter main branchから取得）
+  # dependenciesの前半がgrammar、後半がqueries
+  xdg.dataFile."nvim/site/parser" = {
     recursive = true;
-    source = pkgs.symlinkJoin {
-      name = "ts-parsers";
-      paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
-    };
+    source =
+      let
+        deps = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+        parsers = lib.take (builtins.length deps / 2) deps;
+      in
+      pkgs.symlinkJoin {
+        name = "ts-parsers";
+        paths = map (p: "${p}/parser") parsers;
+      };
   };
 }
