@@ -1,17 +1,8 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
+		event = { "VeryLazy" },
 		cmd = { "ConformInfo" },
-		keys = {
-			{
-				"<leader>cf",
-				function()
-					require("conform").format({ async = true })
-				end,
-				desc = "Format buffer",
-			},
-		},
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -24,5 +15,11 @@ return {
 				lsp_format = "fallback",
 			},
 		},
+		config = function(_, opts)
+			require("conform").setup(opts)
+			vim.keymap.set("n", "<leader>cf", function()
+				require("conform").format({ async = true })
+			end, { desc = "Format buffer" })
+		end,
 	},
 }
