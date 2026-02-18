@@ -167,8 +167,6 @@ in
   #  /etc/profiles/per-user/frort/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    MEMODIR = "$HOME/obsidian/default/memo";
-    TODODIR = "$HOME/obsidian/default/00-todo.md";
   };
   home.sessionPath = [
     "$HOME/go/bin"
