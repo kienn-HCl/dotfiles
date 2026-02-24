@@ -72,6 +72,7 @@ in
     comma
     entr
     claude-code
+    inputs.ksk.packages.${pkgs.system}.default
 
     pdfcpu
 

@@ -30,6 +30,10 @@
       url = "github:aster-void/nix-hazkey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ksk = {
+      url = "github:kienn-HCl/ksk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -44,6 +48,7 @@
       firefox-nightly,
       emacs-overlay,
       nix-hazkey,
+      ksk,
       ...
     }@inputs:
     let
