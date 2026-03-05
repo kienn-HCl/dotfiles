@@ -11,3 +11,4 @@ application/xhtml+xml=firefox-nightly.desktop
 x-scheme-handler/http=firefox-nightly.desktop
 x-scheme-handler/https=firefox-nightly.desktop
 inode/directory=thunar.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop

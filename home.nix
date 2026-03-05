@@ -72,7 +72,9 @@ in
     comma
     entr
     claude-code
+    glow
     inputs.ksk.packages.${pkgs.system}.default
+    inputs.romv.packages.${pkgs.system}.default
 
     pdfcpu
 
@@ -97,7 +99,7 @@ in
 
     xwayland-satellite
 
-    wineWowPackages.waylandFull
+    # wineWowPackages.waylandFull
     winetricks
 
     (config.lib.nixGL.wrap pkgs.noctalia-shell)

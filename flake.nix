@@ -34,6 +34,10 @@
       url = "github:kienn-HCl/ksk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    romv = {
+      url = "github:kienn-HCl/romv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -49,6 +53,7 @@
       emacs-overlay,
       nix-hazkey,
       ksk,
+      romv,
       ...
     }@inputs:
     let
