@@ -106,6 +106,7 @@ in
     quickshell
     (config.lib.nixGL.wrap gpu-screen-recorder)
     cava
+    (spotify-player.override { withAudioBackend = "pulseaudio"; })
   ];
 
   imports = [
