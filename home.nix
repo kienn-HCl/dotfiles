@@ -96,6 +96,7 @@ in
     # (config.lib.nixGL.wrap pkgs.freecad-wayland)
     # (config.lib.nixGL.wrap pkgs.steam)
     libreoffice
+    synology-drive-client
 
     xwayland-satellite
 
@@ -120,7 +121,7 @@ in
     ./lazygit
     ./mimeapps
     ./mpv
-    ./nextcloud
+    # ./nextcloud
     ./niri
     ./nvim
     ./rofi
