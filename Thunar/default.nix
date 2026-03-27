@@ -6,12 +6,12 @@
 }:
 {
   home.packages = with pkgs; [
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-vcs-plugin
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.tumbler
+    thunar
+    thunar-volman
+    thunar-vcs-plugin
+    thunar-archive-plugin
+    thunar-media-tags-plugin
+    tumbler
   ];
   xdg.configFile."Thunar" = {
     source = ./Thunar;

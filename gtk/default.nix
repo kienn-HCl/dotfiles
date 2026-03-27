@@ -18,9 +18,12 @@
       gtk-key-theme-name = "Emacs";
       gtk-decoration-layout = "menu:close";
     };
-    gtk4.extraConfig = {
-      gtk-key-theme-name = "Emacs";
-      gtk-decoration-layout = "menu:close";
+    gtk4 = {
+      theme = null;
+      extraConfig = {
+        gtk-key-theme-name = "Emacs";
+        gtk-decoration-layout = "menu:close";
+      };
     };
     iconTheme = {
       name = "Colloid-Dark";

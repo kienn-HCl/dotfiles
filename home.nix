@@ -61,8 +61,8 @@ in
     entr
     claude-code
     glow
-    inputs.ksk.packages.${pkgs.system}.default
-    inputs.romv.packages.${pkgs.system}.default
+    inputs.ksk.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.romv.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     pdfcpu
 
@@ -160,6 +160,7 @@ in
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    setSessionVariables = false;
   };
   home.sessionVariables.XDG_DATA_HOME = "${config.xdg.dataHome}";
   xdg.dataFile."Wallpapers" = {

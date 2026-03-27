@@ -17,7 +17,7 @@ in
         # include = "/usr/share/foot/themes/gruvbox-dark";
         font = "HackGenConsoleNF:size=12";
       };
-      colors = {
+      colors-dark = {
         background = trimSharp color.background0;
         foreground = trimSharp color.foreground0;
 
