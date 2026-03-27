@@ -1,19 +1,63 @@
 {
   fontSize ? "13",
+  color,
 }:
+let
+  # #RRGGBB → r, g, b の10進数に分解するヘルパー
+  hexToCSS =
+    hex: alpha:
+    let
+      hexStr = builtins.substring 1 6 hex;
+      r = builtins.substring 0 2 hexStr;
+      g = builtins.substring 2 2 hexStr;
+      b = builtins.substring 4 2 hexStr;
+      hexDigit =
+        c:
+        let
+          digits = {
+            "0" = 0;
+            "1" = 1;
+            "2" = 2;
+            "3" = 3;
+            "4" = 4;
+            "5" = 5;
+            "6" = 6;
+            "7" = 7;
+            "8" = 8;
+            "9" = 9;
+            "a" = 10;
+            "b" = 11;
+            "c" = 12;
+            "d" = 13;
+            "e" = 14;
+            "f" = 15;
+            "A" = 10;
+            "B" = 11;
+            "C" = 12;
+            "D" = 13;
+            "E" = 14;
+            "F" = 15;
+          };
+        in
+        digits.${c};
+      hexPairToInt =
+        s: (hexDigit (builtins.substring 0 1 s)) * 16 + (hexDigit (builtins.substring 1 1 s));
+    in
+    "rgba(${toString (hexPairToInt r)}, ${toString (hexPairToInt g)}, ${toString (hexPairToInt b)}, ${alpha})";
+in
 ''
   * {
       font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
       font-size: ${fontSize}px;
   }
 
-  @define-color inactive_module_color #a9a9a9;
+  @define-color inactive_module_color ${color.brightBlack};
 
   window#waybar {
-      background-color: rgba(43, 48, 59, 0.8);
-      border-color: rgba(100, 114, 125, 0.5);
+      background-color: ${hexToCSS color.background0 "0.8"};
+      border-color: ${hexToCSS color.background5 "0.5"};
       border-style: solid;
-      color: #ffffff;
+      color: ${color.foreground0};
       transition-property: background-color;
       transition-duration: .5s;
   }
@@ -107,7 +151,7 @@
 
   #workspaces button {
       background-color: transparent;
-      color: #ffffff;
+      color: ${color.foreground0};
   }
 
   #workspaces button:hover {
@@ -115,7 +159,7 @@
   }
 
   #workspaces button.focused {
-      background-color: #64727D;
+      background-color: ${color.blue};
   }
 
   window#waybar:not(.bottom):not(.left):not(.right) #workspaces button.focused {
@@ -127,11 +171,11 @@
   }
 
   #workspaces button.urgent {
-      background-color: #eb4d4b;
+      background-color: ${color.brightRed};
   }
 
   #mode {
-      background-color: #64727D;
+      background-color: ${color.blue};
   }
 
   window#waybar:not(.bottom):not(.left):not(.right) #mode {
@@ -148,18 +192,18 @@
   }
 
   #battery.charging, #battery.plugged {
-      color: #32cd32;
+      color: ${color.brightGreen};
   }
 
   @keyframes blink {
       to {
-          background-color: #ffffff;
-          color: #000000;
+          background-color: ${color.foreground0};
+          color: ${color.black};
       }
   }
 
   #battery.critical:not(.charging) {
-      color: #f53c3c;
+      color: ${color.brightRed};
       animation-name: blink;
       animation-duration: 0.5s;
       animation-timing-function: linear;
@@ -183,7 +227,7 @@
 
   @keyframes needs-attention {
       to {
-          background-color: rgba(235, 77, 75, 0.5);
+          background-color: ${hexToCSS color.brightRed "0.5"};
       }
   }
 
@@ -213,7 +257,7 @@
 
   #cpu.high,
   #temperature.critical {
-      color: #eb4d4b;
+      color: ${color.brightRed};
   }
 
   #language {
@@ -245,47 +289,47 @@
    * Module colors
    */
   #cpu {
-      color: #2ecc71;
+      color: ${color.brightGreen};
   }
 
   #memory {
-      color: #ba55d3;
+      color: ${color.brightMagenta};
   }
 
   #disk {
-      color: #964B00;
+      color: ${color.yellow};
   }
 
   #backlight {
-      color: #90b1b1;
+      color: ${color.cyan};
   }
 
   #network {
-      color: #00bfff;
+      color: ${color.brightBlue};
   }
 
   #pulseaudio,
   #wireplumber {
-      color: #f1c40f;
+      color: ${color.brightYellow};
   }
 
   #temperature {
-      color: #f0932b;
+      color: ${color.orange};
   }
 
   #mpd {
-      color: #66cc99;
+      color: ${color.brightGreen};
   }
 
   #mpd.paused {
-      color: #51a37a;
+      color: ${color.green};
   }
 
   #language {
-      color: #00b093;
+      color: ${color.brightCyan};
   }
 
   #keyboard-state {
-      color: #97e1ad;
+      color: ${color.brightGreen};
   }
 ''

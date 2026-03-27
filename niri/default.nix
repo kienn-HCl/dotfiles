@@ -12,12 +12,32 @@ let
     layout.default-column-width.proportion = hostConfig.defaultColumnWidth;
   };
   configHosts = import ./config-hosts.nix { inherit host; };
+  color = import ../lib/color/kanagawa-dragon.nix;
 in
 {
   xdg.configFile = {
     "niri/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/niri/config.kdl";
     "niri/config-hosts.kdl".text = configHosts;
+    "niri/config-colors.kdl".text = ''
+      overview {
+          backdrop-color "${color.background0}"
+      }
+      layout {
+          focus-ring {
+              active-color "${color.green}"
+              inactive-color "${color.brightBlack}"
+              urgent-color "${color.brightRed}"
+          }
+          border {
+              active-color "${color.brightYellow}"
+              inactive-color "${color.background5}"
+          }
+          tab-indicator {
+              urgent-color "${color.brightRed}"
+          }
+      }
+    '';
     "niri/script" = {
       source = ./niri/script;
       recursive = true;

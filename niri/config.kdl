@@ -1,10 +1,8 @@
 // Host-specific settings (xkb layout, default-column-width)
 include "config-hosts.kdl"
 
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
-overview {
-    backdrop-color "#1d2021"
-}
+// Color settings (generated from kanagawa-dragon.nix)
+include "config-colors.kdl"
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
@@ -69,18 +67,15 @@ layout {
 
     // default-column-width is set in config-hosts.kdl
 
+    // focus-ring colors are set in config-colors.kdl
     focus-ring {
         width 4
-        active-color "#98971a"
-        inactive-color "#a89984"
-        urgent-color "#cc241d"
     }
 
+    // border colors are set in config-colors.kdl
     border {
         off
         width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
     }
 
     struts {
@@ -96,7 +91,7 @@ layout {
         corner-radius 10
         position "left"
         place-within-column
-        urgent-color "#cc241d"
+        // urgent-color is set in config-colors.kdl
     }
 }
 

@@ -21,4 +21,16 @@
   brightMagenta = "#938aa9";
   brightCyan = "#7aa89f";
   brightWhite = "#c5c9c5";
+
+  # 背景グラデーション（UI要素用）
+  background2 = "#12120f"; # dragonBlack1
+  background3 = "#1D1C19"; # dragonBlack2
+  background4 = "#282727"; # dragonBlack4
+  background5 = "#393836"; # dragonBlack5
+
+  # 追加色
+  gray = "#625e5a"; # dragonBlack6
+  orange = "#b6927b"; # dragonOrange
+  violet = "#8992a7"; # dragonViolet
+  ash = "#737c73"; # dragonAsh
 }
