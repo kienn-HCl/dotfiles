@@ -15,7 +15,7 @@ in
     settings = {
       main = {
         # include = "/usr/share/foot/themes/gruvbox-dark";
-        font = "HackGenConsoleNF:size=12";
+        font = "Hack Nerd Font Mono:size=12, HackGen35ConsoleNF:size=12";
       };
       colors-dark = {
         background = trimSharp color.background0;

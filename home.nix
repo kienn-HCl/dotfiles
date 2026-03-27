@@ -70,6 +70,7 @@ in
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     hackgen-nf-font
+    nerd-fonts.hack
 
     uv
 
@@ -155,6 +156,8 @@ in
       "grp:shifts_toggle"
     ];
   };
+
+  fonts.fontconfig.enable = true;
 
   xdg.enable = true;
   xdg.userDirs = {
