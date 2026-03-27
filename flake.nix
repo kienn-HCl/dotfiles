@@ -32,22 +32,11 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      flake-parts,
-      home-manager,
-      nixgl,
-      firefox-nightly,
-      nix-hazkey,
-      ksk,
-      romv,
-      ...
-    }@inputs:
+    inputs:
     let
-      pkgs = import nixpkgs { };
+      pkgs = import inputs.nixpkgs { };
     in
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.treefmt-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager
@@ -59,18 +48,12 @@
         "aarch64-darwin"
       ];
       flake = {
-        homeConfigurations."frort" = home-manager.lib.homeManagerConfiguration {
+        homeConfigurations."frort" = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
           };
-
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
           modules = [ ./home.nix ];
-
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
         };
       };
       perSystem =
