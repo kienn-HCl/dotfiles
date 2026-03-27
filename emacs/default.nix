@@ -6,7 +6,7 @@
 }:
 {
   programs.emacs = {
-    package = pkgs.emacs-git;
+    package = pkgs.emacs-pgtk;
     enable = true;
     extraPackages = epkgs: [
       epkgs.magic-latex-buffer
