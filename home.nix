@@ -69,7 +69,7 @@ in
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    hackgen-nf-font
+    hackgen-font
     nerd-fonts.hack
 
     uv

@@ -8,14 +8,25 @@ let
   color = import ../lib/color/kanagawa-dragon.nix;
   helpers = import ../lib/helpers.nix;
   inherit (helpers) trimSharp;
+  nfwidth = import ../pkgs/nfwidth.nix { inherit pkgs; };
 in
 {
   programs.foot = {
     enable = true;
+    package = pkgs.symlinkJoin {
+      name = "foot-nfwidth";
+      paths = [ pkgs.foot ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        for bin in foot footclient; do
+          wrapProgram $out/bin/$bin \
+            --prefix LD_PRELOAD : "${nfwidth}/lib/libnfwidth.so"
+        done
+      '';
+    };
     settings = {
       main = {
-        # include = "/usr/share/foot/themes/gruvbox-dark";
-        font = "Hack Nerd Font Mono:size=12, HackGen35ConsoleNF:size=12";
+        font = "HackGen Console:size=12, Hack Nerd Font:size=12";
       };
       colors-dark = {
         background = trimSharp color.background0;
