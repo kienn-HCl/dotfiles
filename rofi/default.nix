@@ -5,7 +5,7 @@
   ...
 }:
 let
-  color = import ../lib/color/kanagawa-dragon.nix;
+  color = import ../lib/color;
 in
 {
   home.packages = [ pkgs.rofi ];

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  color = import ../lib/color/kanagawa-dragon.nix;
+  color = import ../lib/color;
   helpers = import ../lib/helpers.nix;
   inherit (helpers) trimSharp;
   nfwidth = import ../pkgs/nfwidth.nix { inherit pkgs; };

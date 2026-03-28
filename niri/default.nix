@@ -12,7 +12,7 @@ let
     layout.default-column-width.proportion = hostConfig.defaultColumnWidth;
   };
   configHosts = import ./config-hosts.nix { inherit host; };
-  color = import ../lib/color/kanagawa-dragon.nix;
+  color = import ../lib/color;
 in
 {
   xdg.configFile = {
@@ -25,12 +25,12 @@ in
       }
       layout {
           focus-ring {
-              active-color "${color.green}"
+              active-color "${color.cyan}"
               inactive-color "${color.brightBlack}"
               urgent-color "${color.brightRed}"
           }
           border {
-              active-color "${color.brightYellow}"
+              active-color "${color.brightCyan}"
               inactive-color "${color.background5}"
           }
           tab-indicator {

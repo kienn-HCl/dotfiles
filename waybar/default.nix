@@ -7,7 +7,7 @@
 let
   hosts = import ../lib/hosts.nix;
   hostConfig = hosts.getHostConfig "waybar";
-  color = import ../lib/color/kanagawa-dragon.nix;
+  color = import ../lib/color;
 in
 {
   xdg.configFile = {

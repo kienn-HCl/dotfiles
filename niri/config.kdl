@@ -1,7 +1,7 @@
 // Host-specific settings (xkb layout, default-column-width)
 include "config-hosts.kdl"
 
-// Color settings (generated from kanagawa-dragon.nix)
+// Color settings (generated from lib/color)
 include "config-colors.kdl"
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input

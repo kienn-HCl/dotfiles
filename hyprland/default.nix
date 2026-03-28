@@ -5,7 +5,7 @@
   ...
 }:
 let
-  color = import ../lib/color/kanagawa-dragon.nix;
+  color = import ../lib/color;
   # #RRGGBB → RRGGBBff (hyprland rgba format)
   toHyprColor = hex: (builtins.substring 1 6 hex) + "ff";
   toHyprColorAlpha = hex: alpha: (builtins.substring 1 6 hex) + alpha;
@@ -22,10 +22,10 @@ in
       recursive = true;
     };
     "hypr/colors.conf".text = ''
-      # Kanagawa Dragon colors (generated from kanagawa-dragon.nix)
-      $active_border = rgba(${toHyprColor color.green})
+      # Colors (generated from lib/color)
+      $active_border = rgba(${toHyprColor color.cyan})
       $inactive_border = rgba(${toHyprColorAlpha color.background5 "aa"})
-      $group_active = rgba(${toHyprColor color.green})
+      $group_active = rgba(${toHyprColor color.cyan})
       $group_inactive = rgba(${toHyprColorAlpha color.background5 "ff"})
       $groupbar_text = rgba(${toHyprColor color.foreground0})
       $lock_outer = rgb(${builtins.substring 1 6 color.background4})
