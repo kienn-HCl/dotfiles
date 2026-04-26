@@ -50,6 +50,7 @@ in
     difftastic
     # silicon
     cliphist
+    python313Packages.manga-ocr
     screen
     yq
     jq

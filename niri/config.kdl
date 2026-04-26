@@ -327,6 +327,7 @@ binds {
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+V { spawn "select-paste.sh"; }
+    Mod+Shift+O { spawn "ocr-capture.sh"; }
 
     // Mod+N { spawn "swaync-client" "-t" "-sw"; }
     Mod+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
