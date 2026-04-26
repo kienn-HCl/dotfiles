@@ -549,7 +549,6 @@ environment {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 // spawn-at-startup "waybar"
-spawn-at-startup "noctalia-shell"
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "cliphist" "store"
 spawn-at-startup "bash" "-c" "$XDG_CONFIG_HOME/niri/script/niri_swayidle.sh"
 

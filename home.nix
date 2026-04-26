@@ -92,15 +92,12 @@ in
     # wineWowPackages.waylandFull
     winetricks
 
-    (config.lib.nixGL.wrap noctalia-shell)
-    quickshell
-    (config.lib.nixGL.wrap gpu-screen-recorder)
-    cava
     (spotify-player.override { withAudioBackend = "pulseaudio"; })
   ];
 
   imports = [
     inputs.nix-hazkey.homeModules.hazkey
+    inputs.noctalia.homeModules.default
     ./direnv
     ./firefox
     ./foot
@@ -112,6 +109,7 @@ in
     ./mpv
     # ./nextcloud
     ./niri
+    ./noctalia
     ./nvim
     ./rofi
     ./starship
