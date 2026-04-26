@@ -15,6 +15,7 @@
     languagePacks = [
       "jp"
     ];
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles."default" = {
       isDefault = true;
       search = {

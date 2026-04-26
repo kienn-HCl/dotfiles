@@ -55,7 +55,6 @@ in
     yq
     jq
     dex
-    bitwarden-cli
     (config.lib.nixGL.wrap imv)
     lsix
     comma
