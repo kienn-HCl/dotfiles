@@ -302,6 +302,12 @@ window-rule {
     open-floating true
 }
 
+// Nani翻訳 (chromium --app=https://nani.now/)
+window-rule {
+    match app-id=r#"^chrome-nani\.now"#
+    open-floating true
+}
+
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 binds {
@@ -328,6 +334,7 @@ binds {
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+V { spawn "select-paste.sh"; }
     Mod+Shift+O { spawn "ocr-capture.sh"; }
+    Mod+Shift+T { spawn "nani-translate.sh"; }
 
     // Mod+N { spawn "swaync-client" "-t" "-sw"; }
     Mod+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }

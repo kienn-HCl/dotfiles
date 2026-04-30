@@ -56,6 +56,7 @@ in
     jq
     dex
     (config.lib.nixGL.wrap imv)
+    (config.lib.nixGL.wrap chromium)
     lsix
     comma
     entr
