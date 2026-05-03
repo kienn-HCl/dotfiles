@@ -172,4 +172,13 @@ in
   home.sessionVariables.XDG_CONFIG_HOME = "${config.xdg.configHome}";
 
   programs.home-manager.enable = true;
+
+  programs.dircolors = {
+    enable = true;
+    enableZshIntegration = true;
+    extraConfig = ''
+      OTHER_WRITABLE 01;34
+      STICKY_OTHER_WRITABLE 01;34
+    '';
+  };
 }
