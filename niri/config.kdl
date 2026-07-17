@@ -318,7 +318,7 @@ binds {
 
     Mod+Return { spawn "foot"; }
     // Mod+D { spawn "rofi" "--terminal" "foot" "-show" "drun"; }
-    Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
     Mod+P { spawn "swaylock"; }
 
@@ -337,7 +337,7 @@ binds {
     Mod+Shift+T { spawn "nani-translate.sh"; }
 
     // Mod+N { spawn "swaync-client" "-t" "-sw"; }
-    Mod+N { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
+    Mod+N { spawn "noctalia" "msg" "panel-toggle" "control-center" "notifications"; }
 
     Mod+Shift+Q { close-window; }
 

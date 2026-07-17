@@ -12,10 +12,10 @@
     };
     nixgl = {
       url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-nightly = {
       url = "github:kienn-HCl/flake-firefox-nightly-ja";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-hazkey = {
       url = "github:aster-void/nix-hazkey";
@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
